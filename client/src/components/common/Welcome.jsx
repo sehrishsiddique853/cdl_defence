@@ -29,10 +29,11 @@ export default function Welcome() {
 
           <div className="welcome-image-wrapper">
             <img
-              src="/images/crimson.png"
+              src="/images/crimson1-optimized.jpg"
               alt="Commercial truck driving on an open highway"
               className="welcome-image"
               loading="lazy"
+              decoding="async"
             />
 
             <div className="welcome-image-badge">
