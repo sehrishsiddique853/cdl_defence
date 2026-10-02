@@ -14,17 +14,14 @@ export default function Hero() {
     const motion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     );
-
     const connection = navigator.connection;
-    const shouldPause = () =>
-      motion.matches || connection?.saveData;
 
     const updateVideo = () => {
-      if (shouldPause()) {
+      if (motion.matches || connection?.saveData) {
         video.pause();
       } else {
         video.play().catch(() => {
-          // Poster stays visible if autoplay is blocked.
+          // Keep the static hero background when autoplay is unavailable.
         });
       }
     };
@@ -47,7 +44,7 @@ export default function Hero() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
         >
           <source
             src="/videos/video.mp4"
@@ -120,12 +117,13 @@ export default function Hero() {
           <div className="royal-crest-glow" />
 
           <img
-            src="/images/logo-transparent.png"
+            src="/images/logo-optimized.png"
             alt="CDL Defense royal crest"
             className="royal-crest"
             width="480"
-            height="600"
+            height="610"
             fetchPriority="high"
+            decoding="async"
           />
         </div>
 

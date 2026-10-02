@@ -1,9 +1,19 @@
 
 .royal-navbar {
-  position: absolute;
+  position: fixed;
   inset: 0 0 auto;
   z-index: 100;
+  background: #090b0e;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.royal-navbar.over-hero {
   background: transparent;
+  box-shadow: none;
+}
+
+.royal-navbar:not(.over-hero) {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
 }
 
 .royal-nav-inner {

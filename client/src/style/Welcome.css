@@ -1,0 +1,341 @@
+
+.welcome-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #101F2A;
+  color: #F5F0E6;
+  padding: 90px 0 110px;
+}
+
+.welcome-container {
+  width: 90%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* Section heading */
+
+.welcome-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.welcome-kicker {
+  display: block;
+  margin-bottom: 14px;
+  color: #08AEC7;
+  font: 600 11px "Inter", sans-serif;
+  letter-spacing: 3px;
+}
+
+.welcome-header h2 {
+  max-width: 1100px;
+  margin: 0 auto;
+  color: #F5F0E6;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(25px, 2.8vw, 38px);
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+.welcome-header h2 span {
+  display: block;
+  color: #DDB057;
+}
+
+.welcome-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 11px auto 0;
+  color: #DDB057;
+}
+
+.welcome-divider span {
+  width: 65px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #DDB057
+  );
+}
+
+.welcome-divider span:last-child {
+  transform: rotate(180deg);
+}
+
+.welcome-divider b {
+  font-size: 19px;
+  font-weight: 400;
+}
+
+/* Two-column layout */
+
+.welcome-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(35px, 5vw, 80px);
+}
+
+/* Image */
+
+.welcome-image-wrapper {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 5 / 4;
+  border: 1px solid rgba(221, 176, 87, 0.45);
+  background: #090B0E;
+}
+
+.welcome-image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 12px -12px -12px 12px;
+  border: 1px solid rgba(221, 176, 87, 0.25);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.welcome-image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+
+.welcome-image-wrapper {
+  isolation: isolate;
+}
+
+.welcome-image-wrapper:hover .welcome-image {
+  transform: scale(1.015);
+}
+
+.welcome-image-badge {
+  position: absolute;
+  z-index: 2;
+  bottom: 24px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  background: #8D0001;
+  border: 1px solid #DDB057;
+  border-left: 0;
+  color: #F5F0E6;
+  font: 600 10px "Inter", sans-serif;
+  letter-spacing: 1px;
+}
+
+.welcome-image-badge svg {
+  color: #DDB057;
+  flex-shrink: 0;
+}
+
+/* Text */
+
+.welcome-text {
+  min-width: 0;
+}
+
+.welcome-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  color: #08AEC7;
+  font: 600 11px "Inter", sans-serif;
+  letter-spacing: 2px;
+}
+
+.welcome-label-line {
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: #08AEC7;
+}
+
+.welcome-text h3 {
+  margin: 0 0 25px;
+  color: #F5F0E6;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(30px, 3.2vw, 48px);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.welcome-text h3 span {
+  color: #DDB057;
+}
+
+.welcome-text p {
+  margin: 0 0 17px;
+  color: #CDD2D8;
+  font: 400 15px/1.85 "Inter", sans-serif;
+}
+
+.welcome-text p strong {
+  color: #F5F0E6;
+  font-weight: 600;
+}
+
+/* Buttons */
+
+.welcome-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 26px;
+  margin-top: 30px;
+}
+
+.welcome-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 49px;
+  padding: 14px 22px;
+  background: #8D0001;
+  border: 1px solid #DDB057;
+  color: #FFFFFF;
+  font: 700 11px "Inter", sans-serif;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.welcome-button:hover {
+  background: #A71920;
+  transform: translateY(-3px);
+}
+
+.welcome-button svg {
+  color: #DDB057;
+}
+
+.welcome-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #DDB057;
+  font: 600 12px "Inter", sans-serif;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.welcome-text-link:hover {
+  color: #F8DB73;
+}
+
+/* Tablet */
+
+@media (max-width: 1050px) {
+  .welcome-section {
+    padding: 70px 0 85px;
+  }
+
+  .welcome-content {
+    gap: 35px;
+  }
+
+  .welcome-text p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .welcome-image-wrapper {
+    aspect-ratio: 4 / 5;
+  }
+
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .welcome-section {
+    padding: 60px 0 75px;
+  }
+
+  .welcome-container {
+    width: 88%;
+  }
+
+  .welcome-header {
+    margin-bottom: 40px;
+  }
+
+  .welcome-header h2 {
+    font-size: clamp(23px, 6vw, 32px);
+  }
+
+  .welcome-kicker {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .welcome-content {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .welcome-image-wrapper {
+    aspect-ratio: 5 / 4;
+  }
+
+  .welcome-image-badge {
+    bottom: 15px;
+    padding: 12px;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+
+  .welcome-label {
+    font-size: 10px;
+  }
+
+  .welcome-text h3 {
+    font-size: clamp(28px, 7vw, 38px);
+  }
+
+  .welcome-text p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .welcome-actions {
+    gap: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  .welcome-image-badge {
+    font-size: 8px;
+    gap: 7px;
+  }
+
+  .welcome-button {
+    padding: 12px 15px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-image,
+  .welcome-button,
+  .welcome-text-link {
+    transition: none;
+  }
+}
