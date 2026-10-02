@@ -1,0 +1,468 @@
+
+.royal-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #090b0e;
+  color: #f4efe6;
+}
+
+/* Full-screen truck video */
+
+.royal-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background: linear-gradient(135deg, #161a20, #090b0e);
+}
+
+.royal-hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Overlay that preserves video visibility */
+
+.royal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 8, 12, .88) 0%,
+      rgba(7, 8, 12, .65) 35%,
+      rgba(7, 8, 12, .30) 65%,
+      rgba(7, 8, 12, .52) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(7, 8, 12, .8) 0%,
+      transparent 30%,
+      rgba(7, 8, 12, .37) 100%
+    );
+}
+
+/* Two-column layout */
+
+.royal-hero-inner {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: clamp(82px, 12svh, 106px) 5% clamp(58px, 9svh, 78px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr)
+                         minmax(0, .8fr);
+  align-items: center;
+  gap: 24px;
+}
+
+@media (max-height: 760px) and (min-width: 768px) {
+  .royal-hero-inner {
+    padding-top: 78px;
+    padding-bottom: 54px;
+  }
+
+  .royal-ticket-strip {
+    margin-bottom: 14px;
+  }
+
+  .royal-hero-heading h1 {
+    font-size: clamp(32px, 3.6vw, 52px);
+  }
+
+  .royal-hero-heading p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .royal-crest {
+    max-height: 62svh;
+  }
+}
+
+.royal-hero-left {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+}
+
+/* Member ticket strip */
+
+.royal-ticket-strip {
+  width: fit-content;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 17px;
+  margin-bottom: 22px;
+  border-left: 3px solid #DDB057;
+  background: #8D0001;
+  color: #fff2dc;
+  text-decoration: none;
+  font: 600 11px "Inter", sans-serif;
+  letter-spacing: .65px;
+  transition: background .25s ease;
+}
+
+.royal-ticket-strip:hover {
+  background: #8D0001;
+}
+
+.royal-ticket-symbol {
+  color: #e5c180;
+  font-size: 18px;
+}
+
+/* Headline */
+
+.royal-hero-kicker {
+  display: block;
+  margin-bottom: 10px;
+  font: 600 10px "Inter", sans-serif;
+  letter-spacing: 3px;
+  color: #DDB057;
+}
+
+.royal-hero-heading h1 {
+  margin: 0;
+  color: #f9f0df;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(36px, 4vw, 62px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -1px;
+  text-align: left;
+  text-shadow: 0 5px 22px rgba(0,0,0,.25);
+}
+
+.royal-hero-heading h1 span {
+  color: #DDB057;
+}
+
+.royal-heading-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 145px;
+  margin: 15px 0;
+  color: #DDB057;
+}
+
+.royal-heading-divider span {
+  height: 1px;
+  flex: 1;
+  background: #DDB057;
+}
+
+.royal-heading-divider b {
+  font-size: 14px;
+}
+
+.royal-hero-heading p {
+  max-width: 590px;
+  color: #f1e9dd;
+  font: 400 15px/1.65 "Inter", sans-serif;
+  text-align: left;
+}
+
+/* Buttons */
+
+.royal-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.royal-hero-buttons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 46px;
+  padding: 12px 18px;
+  text-decoration: none;
+  font: 700 11px "Inter", sans-serif;
+  letter-spacing: .8px;
+  transition:
+    background .25s,
+    color .25s,
+    transform .25s;
+}
+
+.royal-btn-gold {
+  background: #DDB057;
+  border: 1px solid #DDB057;
+  color: #160f08;
+}
+
+.royal-btn-gold:hover {
+  background: #f0d395;
+  transform: translateY(-2px);
+}
+
+.royal-btn-outline {
+  border: 1px solid #DDB057;
+  background: rgba(0,0,0,.2);
+  color: #f2dfb8;
+}
+
+.royal-btn-outline:hover {
+  background: #DDB057;
+  color: #160f08;
+  transform: translateY(-2px);
+}
+
+/* Right-side royal crest */
+
+.royal-hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.royal-crest {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: min(100%, 390px);
+  height: auto;
+  max-height: min(68svh, 500px);
+  object-fit: contain;
+  filter:
+    drop-shadow(0 20px 28px rgba(0,0,0,.65));
+}
+
+.royal-crest-glow {
+  position: absolute;
+  width: 85%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(200,150,55,.18),
+    rgba(0,169,199,.06) 45%,
+    transparent 75%
+  );
+  filter: blur(25px);
+}
+
+/* Bottom decorative bar */
+
+.royal-hero-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  border-top:
+    1px solid rgba(214,177,106,.28);
+  background: rgba(8,9,12,.48);
+  font: 600 10px "Cinzel", serif;
+  letter-spacing: 2px;
+  color: #DDB057;
+}
+
+.royal-hero-bottom b {
+  color: #00a9c7;
+}
+
+/* Tablet */
+
+@media (max-width: 1050px) {
+  .royal-hero-inner {
+    padding-top: clamp(78px, 12svh, 96px);
+    padding-bottom: clamp(50px, 8svh, 62px);
+    gap: 12px;
+  }
+
+  .royal-crest {
+    max-width: 310px;
+  }
+
+  .royal-hero-heading h1 {
+    font-size: clamp(34px, 4.4vw, 48px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .royal-hero-inner {
+    grid-template-columns: minmax(0, 1.15fr) minmax(220px, .85fr);
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .royal-hero-heading h1 {
+    font-size: clamp(32px, 4vw, 42px);
+  }
+
+  .royal-crest {
+    width: min(100%, 270px);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .royal-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    align-items: flex-start;
+  }
+
+  .royal-hero-inner {
+    grid-template-columns: 1fr;
+    padding: 92px 6% 70px;
+  }
+
+  .royal-ticket-strip {
+    padding: 10px 11px;
+    margin-bottom: 16px;
+    font-size: 9px;
+    letter-spacing: 0;
+    gap: 8px;
+  }
+
+  .royal-hero-heading h1 {
+    font-size: clamp(29px, 7.6vw, 42px);
+  }
+
+  .royal-hero-heading p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .royal-hero-right {
+    position: absolute;
+    bottom: 54px;
+    right: -4%;
+    z-index: -1;
+    opacity: .18;
+  }
+
+  .royal-crest {
+    width: 190px;
+  }
+
+  .royal-hero-buttons {
+    gap: 10px;
+  }
+
+  .royal-hero-buttons a {
+    min-height: 42px;
+    padding: 10px 12px;
+    font-size: 10px;
+  }
+
+  .royal-hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(7,8,12,.91),
+        rgba(7,8,12,.65)
+      );
+  }
+
+  .royal-hero-bottom {
+    min-height: 38px;
+    gap: 13px;
+    font-size: 8px;
+    letter-spacing: .6px;
+  }
+}
+
+@media (max-width: 380px) {
+  .royal-nav-inner {
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+
+  .royal-brand img {
+    width: 88px;
+    max-height: 54px;
+  }
+
+  .royal-hero-inner {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .royal-ticket-strip {
+    font-size: 8px;
+  }
+
+  .royal-hero-buttons {
+    gap: 8px;
+  }
+
+  .royal-hero-buttons a {
+    gap: 8px;
+    padding: 10px;
+    font-size: 9px;
+    letter-spacing: .4px;
+  }
+}
+
+@media (max-height: 700px) and (max-width: 767px) {
+  .royal-hero {
+    min-height: max(100vh, 640px);
+    min-height: max(100svh, 640px);
+  }
+
+  .royal-hero-inner {
+    padding-top: 80px;
+    padding-bottom: 58px;
+  }
+
+  .royal-hero-kicker {
+    margin-bottom: 7px;
+  }
+
+  .royal-ticket-strip {
+    margin-bottom: 12px;
+  }
+
+  .royal-hero-heading h1 {
+    font-size: clamp(28px, 6vw, 36px);
+  }
+
+  .royal-heading-divider {
+    margin: 10px 0;
+  }
+
+  .royal-hero-heading p {
+    line-height: 1.55;
+  }
+
+  .royal-hero-buttons {
+    margin-top: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .royal-hero-video {
+    display: none;
+  }
+
+  .royal-hero-buttons a {
+    transition: none;
+  }
+}
