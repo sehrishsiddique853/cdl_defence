@@ -116,15 +116,7 @@ export default function Hero() {
         <div className="royal-hero-right">
           <div className="royal-crest-glow" />
 
-          <img
-            src="/images/logo-optimized.png"
-            alt="CDL Defense royal crest"
-            className="royal-crest"
-            width="480"
-            height="610"
-            fetchPriority="high"
-            decoding="async"
-          />
+          <AnimatedShield />
         </div>
 
       </div>
