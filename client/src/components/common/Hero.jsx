@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ChevronsRight } from "lucide-react";
+import AnimatedShield from "./AnimatedShield";
 import "../../style/Hero.css";
 
 export default function Hero() {
