@@ -13,17 +13,8 @@ const services = [
     title: "DOT Inspection Support",
     description:
       "Guidance to help drivers address inspection-related issues and understand compliance requirements.",
-  },
-  {
-    title: "ELD Compliance Assistance",
-    description:
-      "Support with electronic logging requirements, recordkeeping, and ELD-related concerns.",
-  },
-  {
-    title: "Fuel Discounts",
-    description:
-      "Access to fuel-saving benefits designed to help drivers and fleet operators reduce operating costs.",
-  },
+  }
+ 
 ];
 
 export default function Services() {

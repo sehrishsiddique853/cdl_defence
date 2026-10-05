@@ -5,6 +5,7 @@ import {
   ShieldCheck,
   Mail,
   Phone,
+  MessageCircle,
 } from "lucide-react";
 import "../../style/Footer.css";
 
@@ -33,18 +34,18 @@ export default function Footer() {
           {/* Brand */}
           <div className="cdl-footer-brand">
             <div className="cdl-footer-logos">
-              <a href="/" className="cdl-footer-name-logo">
-                <img
-                  src="/images/footer-wordmark-trim.png"
-                  alt="CDL Defense"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
               <a href="/" className="cdl-footer-logo">
                 <img
                   src="/images/logo-optimized.png"
                   alt="CDL Defense crest"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <a href="/" className="cdl-footer-name-logo">
+                <img
+                  src="/images/footer-wordmark-trim.png"
+                  alt="CDL Defense"
                   loading="lazy"
                   decoding="async"
                 />
@@ -62,6 +63,19 @@ export default function Footer() {
               <ShieldCheck size={18} />
               YOUR CAREER. OUR COMMITMENT.
             </div>
+
+            <nav className="cdl-footer-socials" aria-label="Social media">
+              <a href="#" aria-label="Facebook"><span aria-hidden="true">f</span></a>
+              <a href="#" aria-label="Instagram">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="18" cy="6" r="0.8" fill="currentColor" />
+                </svg>
+              </a>
+              <a href="#" aria-label="WhatsApp"><MessageCircle size={18} /></a>
+              <a href="#" aria-label="LinkedIn"><span aria-hidden="true">in</span></a>
+            </nav>
           </div>
 
           {/* Quick links */}

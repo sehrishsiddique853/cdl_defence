@@ -40,21 +40,21 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
         >
           <img
-            className="royal-brand-wordmark"
-            src="/images/footer-wordmark-trim.png"
-            alt="CDL Defense"
-            width="840"
-            height="226"
-            fetchPriority="high"
-            decoding="async"
-          />
-          <img
             className="royal-brand-crest"
             src="/images/logo-optimized.png"
             alt=""
             aria-hidden="true"
             width="140"
             height="178"
+            decoding="async"
+          />
+          <img
+            className="royal-brand-wordmark"
+            src="/images/footer-wordmark-trim.png"
+            alt="CDL Defense"
+            width="840"
+            height="226"
+            fetchPriority="high"
             decoding="async"
           />
         </Link>

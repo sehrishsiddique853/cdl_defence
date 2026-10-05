@@ -118,6 +118,46 @@
   color: #b5a17d;
 }
 
+.cdl-footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.cdl-footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(221, 176, 87, 0.45);
+  border-radius: 50%;
+  color: #d5b579;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.cdl-footer-socials a:hover {
+  color: #0b1016;
+  background: #d5b579;
+}
+
+.cdl-footer-socials a > span {
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.cdl-footer-socials a[aria-label="Facebook"] > span {
+  font-size: 21px;
+}
+
+.cdl-footer-socials a > svg {
+  width: 18px;
+  height: 18px;
+}
+
 /* ==================================
    COLUMN HEADINGS
 ===================================== */

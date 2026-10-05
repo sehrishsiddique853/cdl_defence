@@ -1,40 +1,47 @@
-
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ShieldCheck, FileCheck2 } from "lucide-react";
+import {
+  ArrowUpRight,
+  ShieldCheck,
+  FileCheck2,
+} from "lucide-react";
 import "../../style/Protection.css";
 
 const services = [
   {
     number: "01",
-    label: "COMPLIANCE & SUPPORT",
-    title: "ELD PROTECTION",
-    image: "/images/eld-optimized.jpg",
-    alt: "Commercial truck undergoing a roadside inspection",
-    Icon: FileCheck2,
-    description: [
-      "Staying compliant with Electronic Logging Device (ELD) regulations is essential for every commercial driver. At CDL Defense, we understand the challenges of managing electronic logs, maintaining accurate records, and keeping up with changing regulatory requirements.",
-
-      "Our ELD protection services are designed to help drivers navigate compliance-related concerns, understand FMCSA requirements, and address issues involving electronic logging devices. We provide guidance and dedicated support to help you avoid preventable violations and stay focused on the road.",
-    ],
-  },
-  {
-    number: "02",
     label: "YOUR CAREER, OUR COMMITMENT",
     title: "CDL PROTECTION",
     image: "/images/cld-optimized.jpg",
     alt: "CDL protection and commercial trucking",
     Icon: ShieldCheck,
     description: [
-      "Your Commercial Driver's License is the foundation of your career. A traffic violation, license-related issue, or regulatory concern can put your livelihood at risk. CDL Defense is committed to helping professional drivers navigate these challenges with confidence.",
+      "Your Commercial Driver's License is more than a credential — it is the foundation of your livelihood. Traffic citations, license-related concerns, and other driving issues can create unnecessary risk for your career if they are not handled properly.",
 
-      "Our CDL protection services provide assistance with CDL-related concerns, traffic violations, and regulatory matters within the scope of your membership. Whether you're an independent driver or part of a fleet, our goal is to help you protect your career and keep moving forward.",
+      "CDL Defense gives professional drivers a dependable place to turn when a CDL-related issue occurs. Our membership support helps you organize case information, understand the next steps, and access the assistance available through your plan so you can spend less time worrying about paperwork and more time on the road.",
+    ],
+  },
+
+  {
+    number: "02",
+    label: "ROADSIDE & COMPLIANCE SUPPORT",
+    title: "DOT INSPECTION SUPPORT",
+    image: "/images/eld-optimized.jpg",
+    alt: "Commercial truck undergoing a roadside DOT inspection",
+    Icon: FileCheck2,
+    description: [
+      "DOT inspections are a routine part of commercial driving, but inspection reports, violations, and compliance concerns can quickly become stressful. CDL Defense helps drivers understand inspection-related issues and gives them a clear path forward when questions or problems arise.",
+
+      "From reviewing inspection concerns to helping you organize the information needed for your case, our support is designed to make the process easier to understand. Whether you drive independently or operate as part of a fleet, CDL Defense helps you stay informed, prepared, and focused on keeping your career moving.",
     ],
   },
 ];
 
 export default function Protection() {
   return (
-    <section className="protection-section" id="protection">
+    <section
+      className="protection-section"
+      id="protection"
+    >
       <div className="protection-container">
 
         <div className="protection-header">
@@ -67,7 +74,6 @@ export default function Protection() {
                 }`}
                 key={service.number}
               >
-
                 <div className="protection-image-wrapper">
                   <img
                     src={service.image}
@@ -99,7 +105,9 @@ export default function Protection() {
                     </div>
 
                     {service.description.map((text) => (
-                      <p key={text}>{text}</p>
+                      <p key={text}>
+                        {text}
+                      </p>
                     ))}
 
                     <Link
@@ -112,7 +120,6 @@ export default function Protection() {
 
                   </div>
                 </div>
-
               </article>
             );
           })}

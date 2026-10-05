@@ -392,6 +392,16 @@
     line-height: 1.8;
   }
 }
+@media (min-width: 1051px) and (max-width: 1500px) {
+  .plans-container {
+    width: 80%;
+    max-width: 1160px;
+  }
+
+  .plans-grid {
+    gap: 26px;
+  }
+}
 
 @media (max-width: 380px) {
   .plan-card-header,
