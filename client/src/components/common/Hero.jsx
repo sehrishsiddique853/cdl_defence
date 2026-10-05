@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ChevronsRight } from "lucide-react";
+import AnimatedShield from "./AnimatedShield";
 import "../../style/Hero.css";
 
 export default function Hero() {
@@ -117,7 +118,7 @@ export default function Hero() {
           <div className="royal-crest-glow" />
 
           <img
-            src="/images/try2-shield.png"
+            src="/images/logo-optimized.png"
             alt="CDL Defense royal crest"
             className="royal-crest"
             width="480"
