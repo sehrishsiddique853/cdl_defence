@@ -11,6 +11,7 @@ import HomePage from "../pages/public/HomePage";
 import AboutPage from "../pages/public/AboutPage";
 import PlansPage from "../pages/public/PlansPage";
 import LoginPage from "../pages/member/LoginPage";
+import ContactPage from "../pages/public/ContactPage";
 
 function ScrollToTop() {
   const { pathname, search, key } = useLocation();
@@ -50,6 +51,11 @@ export default function AppRoutes() {
           path="*"
           element={<Navigate to="/" replace />}
         />
+
+        <Route
+  path="/contact"
+  element={<ContactPage />}
+/>
       </Routes>
     </>
   );
