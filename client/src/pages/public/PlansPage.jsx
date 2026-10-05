@@ -1,3 +1,4 @@
+
 import {
   ShieldCheck,
   FileText,
@@ -8,8 +9,12 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
+
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+
 import Plans from "../../components/common/Plans";
+
 import "../../style/PlansPage.css";
 
 const protectionItems = [
@@ -66,6 +71,49 @@ const steps = [
   },
 ];
 
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+}) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const element = ref.current;
+
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          element.classList.add("is-visible");
+          observer.unobserve(element);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`plans-reveal ${className}`}
+      style={{
+        "--plans-delay": `${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function PlansPage() {
   return (
     <main className="plans-page">
@@ -100,7 +148,9 @@ export default function PlansPage() {
       </section>
 
       {/* EXISTING PLAN COMPONENT */}
-      <Plans />
+      <Reveal className="plans-pricing-reveal">
+        <Plans />
+      </Reveal>
 
       {/* WHAT MEMBERSHIP DOES */}
       <section className="plans-page-protection">
@@ -124,21 +174,25 @@ export default function PlansPage() {
           </div>
 
           <div className="plans-page-benefits-grid">
-            {protectionItems.map((item) => {
+            {protectionItems.map((item, index) => {
               const Icon = item.icon;
 
               return (
-                <article
-                  className="plans-page-benefit-card"
+                <Reveal
                   key={item.title}
+                  className="plans-page-benefit-reveal"
+                  delay={index * 90}
                 >
-                  <div className="plans-page-benefit-icon">
-                    <Icon size={22} strokeWidth={1.7} />
-                  </div>
+                  <article className="plans-page-benefit-card">
+                    <div className="plans-page-benefit-icon">
+                      <Icon size={22} strokeWidth={1.7} />
+                    </div>
 
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </article>
+                    <h3>{item.title}</h3>
+
+                    <p>{item.text}</p>
+                  </article>
+                </Reveal>
               );
             })}
           </div>
@@ -151,7 +205,9 @@ export default function PlansPage() {
         <div className="plans-page-container">
 
           <div className="plans-page-section-heading">
-            <span>HOW IT WORKS</span>
+            <span>
+              HOW IT WORKS
+            </span>
 
             <h2>
               SIMPLE SUPPORT
@@ -160,20 +216,23 @@ export default function PlansPage() {
           </div>
 
           <div className="plans-page-steps">
-            {steps.map((step) => (
-              <article
-                className="plans-page-step"
+            {steps.map((step, index) => (
+              <Reveal
                 key={step.number}
+                className="plans-page-step-reveal"
+                delay={index * 100}
               >
-                <span className="plans-page-step-number">
-                  {step.number}
-                </span>
+                <article className="plans-page-step">
+                  <span className="plans-page-step-number">
+                    {step.number}
+                  </span>
 
-                <div>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                </div>
-              </article>
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                  </div>
+                </article>
+              </Reveal>
             ))}
           </div>
 
@@ -186,75 +245,96 @@ export default function PlansPage() {
 
           <div className="plans-page-types-grid">
 
-            <article className="plans-page-type-card fleet">
-              <Truck size={28} />
+            <Reveal
+              className="plans-page-type-reveal fleet-reveal"
+            >
+              <article className="plans-page-type-card fleet">
+                <Truck size={28} />
 
-              <span>FOR FLEETS</span>
+                <span>
+                  FOR FLEETS
+                </span>
 
-              <h2>Fleet Plan</h2>
+                <h2>
+                  Fleet Plan
+                </h2>
 
-              <p>
-                Designed for businesses managing commercial drivers.
-                The Fleet Plan provides membership coverage for the
-                included drivers while giving the business a more
-                organized way to provide CDL support across its team.
-              </p>
+                <p>
+                  Designed for businesses managing commercial drivers.
+                  The Fleet Plan provides membership coverage for the
+                  included drivers while giving the business a more
+                  organized way to provide CDL support across its team.
+                </p>
 
-              <ul>
-                <li>
-                  <CheckCircle2 size={16} />
-                  Coverage for 2 drivers
-                </li>
-                <li>
-                  <CheckCircle2 size={16} />
-                  CDL-related support
-                </li>
-                <li>
-                  <CheckCircle2 size={16} />
-                  DOT inspection support
-                </li>
-              </ul>
+                <ul>
+                  <li>
+                    <CheckCircle2 size={16} />
+                    Coverage for 2 drivers
+                  </li>
 
-              <Link to="/plans?plan=fleet">
-                CHOOSE FLEET PLAN
-                <ArrowRight size={16} />
-              </Link>
-            </article>
+                  <li>
+                    <CheckCircle2 size={16} />
+                    CDL-related support
+                  </li>
 
-            <article className="plans-page-type-card individual">
-              <UserRound size={28} />
+                  <li>
+                    <CheckCircle2 size={16} />
+                    DOT inspection support
+                  </li>
+                </ul>
 
-              <span>FOR INDEPENDENT DRIVERS</span>
+                <Link to="/plans?plan=fleet">
+                  CHOOSE FLEET PLAN
+                  <ArrowRight size={16} />
+                </Link>
+              </article>
+            </Reveal>
 
-              <h2>Individual Plan</h2>
+            <Reveal
+              className="plans-page-type-reveal individual-reveal"
+              delay={120}
+            >
+              <article className="plans-page-type-card individual">
+                <UserRound size={28} />
 
-              <p>
-                Built for owner-operators and individual commercial
-                drivers who want direct membership support when
-                CDL-related concerns, citations, or inspection issues
-                occur.
-              </p>
+                <span>
+                  FOR INDEPENDENT DRIVERS
+                </span>
 
-              <ul>
-                <li>
-                  <CheckCircle2 size={16} />
-                  Coverage for 1 driver
-                </li>
-                <li>
-                  <CheckCircle2 size={16} />
-                  CDL protection support
-                </li>
-                <li>
-                  <CheckCircle2 size={16} />
-                  DOT inspection support
-                </li>
-              </ul>
+                <h2>
+                  Individual Plan
+                </h2>
 
-              <Link to="/plans?plan=individual">
-                CHOOSE INDIVIDUAL PLAN
-                <ArrowRight size={16} />
-              </Link>
-            </article>
+                <p>
+                  Built for owner-operators and individual commercial
+                  drivers who want direct membership support when
+                  CDL-related concerns, citations, or inspection issues
+                  occur.
+                </p>
+
+                <ul>
+                  <li>
+                    <CheckCircle2 size={16} />
+                    Coverage for 1 driver
+                  </li>
+
+                  <li>
+                    <CheckCircle2 size={16} />
+                    CDL protection support
+                  </li>
+
+                  <li>
+                    <CheckCircle2 size={16} />
+                    DOT inspection support
+                  </li>
+                </ul>
+
+                <Link to="/plans?plan=individual">
+                  CHOOSE INDIVIDUAL PLAN
+                  <ArrowRight size={16} />
+                </Link>
+              </article>
+            </Reveal>
 
           </div>
         </div>
@@ -265,7 +345,9 @@ export default function PlansPage() {
         <div className="plans-page-container">
           <ShieldCheck size={29} />
 
-          <span>PROTECT WHAT KEEPS YOU MOVING</span>
+          <span>
+            PROTECT WHAT KEEPS YOU MOVING
+          </span>
 
           <h2>
             YOUR CDL. YOUR LIVELIHOOD.
