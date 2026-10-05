@@ -30,28 +30,27 @@
 }
 
 /* Overlay that preserves video visibility */
-
 .royal-hero-overlay {
   position: absolute;
   inset: 0;
   z-index: -2;
   pointer-events: none;
+
   background:
     linear-gradient(
       90deg,
-      rgba(7, 8, 12, .88) 0%,
-      rgba(7, 8, 12, .65) 35%,
-      rgba(7, 8, 12, .30) 65%,
-      rgba(7, 8, 12, .52) 100%
+      rgba(7, 8, 12, 0.48) 0%,
+      rgba(7, 8, 12, 0.28) 35%,
+      rgba(7, 8, 12, 0.08) 65%,
+      rgba(7, 8, 12, 0.16) 100%
     ),
     linear-gradient(
       0deg,
-      rgba(7, 8, 12, .8) 0%,
-      transparent 30%,
-      rgba(7, 8, 12, .37) 100%
+      rgba(7, 8, 12, 0.34) 0%,
+      transparent 38%,
+      rgba(7, 8, 12, 0.10) 100%
     );
 }
-
 /* Two-column layout */
 
 .royal-hero-inner {
@@ -271,18 +270,29 @@
   left: 0;
   width: 100%;
   min-height: 42px;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 35px;
-  border-top:
-    1px solid rgba(214,177,106,.28);
-  background: rgba(8,9,12,.48);
+
+  border-top: 1px solid rgba(214, 177, 106, 0.22);
+
+  /* lighter transparent background */
+  background: rgba(8, 9, 12, 0.18);
+
+  /* subtle glass effect */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
   font: 600 10px "Cinzel", serif;
   letter-spacing: 2px;
   color: #DDB057;
 }
 
+.royal-hero-bottom b {
+  color: #00a9c7;
+}
 .royal-hero-bottom b {
   color: #00a9c7;
 }

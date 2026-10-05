@@ -22,8 +22,6 @@ const plans = [
     features: [
       "2 drivers covered",
       "DOT inspection protection",
-      "ELD compliance support",
-      "Industry-leading fuel discounts",
       "Comprehensive CDL protection",
     ],
   },
@@ -38,9 +36,7 @@ const plans = [
     features: [
       "1 driver covered",
       "Full CDL protection",
-      "ELD compliance support",
       "DOT inspection protection",
-      "Market-leading fuel discounts",
     ],
   },
 ];

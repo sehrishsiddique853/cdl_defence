@@ -1,0 +1,70 @@
+.shield-badge {
+  position: relative;
+  width: min(100%, 390px);
+  max-height: min(68svh, 500px);
+  margin: 0 auto;
+  perspective: 900px;
+  line-height: 0;
+}
+
+.shield-badge-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(68svh, 500px);
+  object-fit: contain;
+  filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.65));
+}
+
+.shield-badge-star {
+  position: absolute;
+  left: 49%;
+  top: 74.2%;
+  width: 5.2%;
+  height: auto;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.28));
+  animation: cdl-star-rotate 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes cdl-star-rotate {
+  from {
+    transform: translate(-50%, -50%) rotateY(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotateY(360deg);
+  }
+}
+
+@media (max-width: 1050px) {
+  .shield-badge {
+    width: min(100%, 310px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .shield-badge {
+    width: min(100%, 270px);
+  }
+}
+
+@media (max-width: 767px) {
+  .shield-badge {
+    width: 190px;
+    max-height: none;
+  }
+
+  .shield-badge-image {
+    max-height: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shield-badge-star {
+    animation: none;
+    transform: translate(-50%, -50%);
+  }
+}
