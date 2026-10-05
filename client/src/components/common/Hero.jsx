@@ -117,7 +117,7 @@ export default function Hero() {
           <div className="royal-crest-glow" />
 
           <img
-            src="/images/logo-optimized.png"
+            src="/images/try2-shield.png"
             alt="CDL Defense royal crest"
             className="royal-crest"
             width="480"

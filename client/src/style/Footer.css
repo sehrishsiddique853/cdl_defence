@@ -1,0 +1,463 @@
+
+/* ==================================
+   CDL DEFENSE — PREMIUM MINIMAL FOOTER
+===================================== */
+
+.cdl-footer {
+  position: relative;
+  width: 100%;
+  background: #0b1016;
+  color: #f5f0e6;
+  border-top: 1px solid rgba(221, 176, 87, 0.16);
+}
+
+.cdl-footer-accent {
+  display: none;
+}
+
+.cdl-footer-container {
+  width: 90%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* ==================================
+   FOOTER LAYOUT
+===================================== */
+
+.cdl-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.75fr 0.9fr 1.1fr;
+  gap: clamp(25px, 3vw, 55px);
+  padding: 55px 0 48px;
+  align-items: start;
+}
+
+/* ==================================
+   BRANDING
+===================================== */
+
+.cdl-footer-brand {
+  min-width: 0;
+  padding-right: 15px;
+}
+
+.cdl-footer-logos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cdl-footer-name-logo {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.cdl-footer-name-logo img {
+  display: block;
+  width: clamp(135px, 13vw, 185px);
+  max-height: 58px;
+  height: auto;
+  object-fit: contain;
+}
+
+.cdl-footer-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.cdl-footer-logo img {
+  display: block;
+  width: 65px;
+  max-height: 70px;
+  height: auto;
+  object-fit: contain;
+}
+
+.cdl-footer-brand h2 {
+  margin: 0 0 12px;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #d5b579;
+}
+
+.cdl-footer-brand > p {
+  max-width: 340px;
+  margin: 0;
+  color: #a4adb6;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.85;
+}
+
+/* Brand motto */
+
+.cdl-footer-motto {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: #b5a17d;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+.cdl-footer-motto svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: #b5a17d;
+}
+
+/* ==================================
+   COLUMN HEADINGS
+===================================== */
+
+.cdl-footer-column {
+  min-width: 0;
+  padding-top: 16px;
+}
+
+.cdl-footer-column h3 {
+  margin: 0 0 23px;
+  color: #e9e5df;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.cdl-footer-heading-line {
+  display: none;
+}
+
+/* ==================================
+   NAVIGATION LINKS
+===================================== */
+
+.cdl-footer-column ul {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cdl-footer-column li {
+  margin: 0;
+  padding: 0;
+}
+
+.cdl-footer-column li a {
+  display: inline-flex;
+  align-items: center;
+  color: #a4adb6;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cdl-footer-column li a:hover {
+  color: #d5b579;
+}
+
+.cdl-footer-arrow {
+  display: none;
+}
+
+/* ==================================
+   CONTACT SECTION
+===================================== */
+
+.cdl-footer-contact {
+  min-width: 0;
+}
+
+.cdl-footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+}
+
+.cdl-footer-contact-item
++ .cdl-footer-contact-item {
+  margin-top: 20px;
+}
+
+/* Direct Lucide icons */
+
+.cdl-footer-contact-item > svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #b5a17d;
+}
+
+/* Icon wrapper, if used in JSX */
+
+.cdl-footer-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: #b5a17d;
+  background: transparent;
+  border: none;
+}
+
+.cdl-footer-contact-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Contact text */
+
+.cdl-footer-contact-item > div:last-child {
+  min-width: 0;
+}
+
+.cdl-footer-contact-item span {
+  display: block;
+  margin: 0 0 6px;
+  color: #e0ddd7;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+
+.cdl-footer-contact-item p,
+.cdl-footer-contact-item a {
+  margin: 0;
+  color: #a4adb6;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.8;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.cdl-footer-contact-item a {
+  transition: color 0.2s ease;
+}
+
+.cdl-footer-contact-item a:hover {
+  color: #d5b579;
+}
+
+/* Google Maps link */
+
+.cdl-footer-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  color: #b5a17d;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cdl-footer-map svg {
+  width: 13px;
+  height: 13px;
+}
+
+.cdl-footer-map:hover {
+  color: #f5f0e6;
+}
+
+/* ==================================
+   COPYRIGHT BAR
+===================================== */
+
+.cdl-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cdl-footer-bottom > p {
+  margin: 0;
+  color: #818b94;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+}
+
+.cdl-footer-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #818b94;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.cdl-footer-bottom-right b {
+  color: #a9936c;
+  font-size: 9px;
+  font-weight: 400;
+}
+
+/* ==================================
+   TABLET
+===================================== */
+
+@media (max-width: 1050px) {
+  .cdl-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 42px 35px;
+    padding: 50px 0 40px;
+  }
+
+  .cdl-footer-column {
+    padding-top: 0;
+  }
+
+  .cdl-footer-brand {
+    padding-right: 0;
+  }
+}
+
+/* ==================================
+   MOBILE
+===================================== */
+
+@media (max-width: 767px) {
+  .cdl-footer-container {
+    width: 88%;
+  }
+
+  .cdl-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 20px;
+    padding: 40px 0 32px;
+  }
+
+  .cdl-footer-brand,
+  .cdl-footer-contact {
+    grid-column: 1 / -1;
+  }
+
+  .cdl-footer-logos {
+    gap: 8px;
+    margin-bottom: 17px;
+  }
+
+  .cdl-footer-name-logo img {
+    width: clamp(125px, 37vw, 165px);
+    max-height: 52px;
+  }
+
+  .cdl-footer-logo img {
+    width: 58px;
+    max-height: 62px;
+  }
+
+  .cdl-footer-brand h2 {
+    font-size: 17px;
+  }
+
+  .cdl-footer-brand > p {
+    font-size: 12px;
+  }
+
+  .cdl-footer-column h3 {
+    margin-bottom: 17px;
+    font-size: 11px;
+  }
+
+  .cdl-footer-column ul {
+    gap: 13px;
+  }
+
+  .cdl-footer-column li a {
+    font-size: 11px;
+  }
+
+  .cdl-footer-contact-item
+  + .cdl-footer-contact-item {
+    margin-top: 17px;
+  }
+
+  .cdl-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 20px 0;
+  }
+
+  .cdl-footer-bottom-right {
+    gap: 8px;
+    font-size: 9px;
+  }
+}
+
+/* ==================================
+   SMALL MOBILE
+===================================== */
+
+@media (max-width: 380px) {
+  .cdl-footer-grid {
+    column-gap: 12px;
+  }
+
+  .cdl-footer-column li a {
+    font-size: 10px;
+  }
+
+  .cdl-footer-name-logo img {
+    width: 125px;
+  }
+
+  .cdl-footer-logo img {
+    width: 50px;
+  }
+}
+
+/* ==================================
+   ACCESSIBILITY
+===================================== */
+
+.cdl-footer a:focus-visible {
+  outline: 2px solid #b5a17d;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cdl-footer a {
+    transition: none;
+  }
+}

@@ -8,7 +8,7 @@ const services = [
     number: "01",
     label: "COMPLIANCE & SUPPORT",
     title: "ELD PROTECTION",
-    image: "/images/eld.jfif",
+    image: "/images/eld-optimized.jpg",
     alt: "Commercial truck undergoing a roadside inspection",
     Icon: FileCheck2,
     description: [
