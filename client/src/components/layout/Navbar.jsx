@@ -49,14 +49,16 @@ export default function Navbar() {
             decoding="async"
           />
           <img
-            className="royal-brand-wordmark"
-            src="/images/footer-wordmark-trim.png"
-            alt="CDL Defense"
-            width="840"
+  id="nav-wordmark-source"
+   className="royal-brand-wordmark"
+  src="/images/footer-wordmark-trim.png"
+  alt="CDL Defense"
+   width="840"
             height="226"
             fetchPriority="high"
             decoding="async"
-          />
+/>
+         
         </Link>
 
         <div

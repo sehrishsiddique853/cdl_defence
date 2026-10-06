@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "../../style/AnimatedShield.css";
+import ShieldWordmarkArrival from "./ShieldWordmarkArrival";
 
 // This is evaluated once when the website document loads.
 // Navigating between React pages does not reset it.
@@ -233,6 +234,11 @@ export default function AnimatedShield() {
           }`}
         />
 
+        <ShieldWordmarkArrival
+  active={finished}
+  animate={playIntro}
+/>
+
       </div>
 
       {playIntro && !finished &&
@@ -266,6 +272,7 @@ export default function AnimatedShield() {
           document.body
         )
       }
+      
     </>
   );
 }

@@ -1,0 +1,240 @@
+
+/* =========================================
+   CDL DEFENSE WORDMARK ARRIVAL
+   Completely separate from dragon animation
+========================================= */
+
+.shield-wordmark-target {
+  position: absolute;
+
+  /* Location matching reference shield */
+  left: 50%;
+  top: 76.5%;
+
+  width: 51%;
+  aspect-ratio: 4 / 1;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 6;
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.shield-wordmark-target.is-settled {
+  opacity: 1;
+}
+
+/* CDL Defense lettering without star */
+
+.shield-wordmark-text {
+  display: block;
+
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+/* Star between CDL and Defense */
+
+.shield-wordmark-star-holder {
+  position: absolute;
+
+  left: 47%;
+top: 58%;
+
+  width: 10%;
+  aspect-ratio: 1;
+
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+  transform-origin: center center;
+
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Rotating star */
+
+.shield-wordmark-star {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 0 3px rgba(255,220,115,.35)
+    );
+
+  backface-visibility: visible;
+  transform-style: preserve-3d;
+}
+
+.shield-wordmark-star.spin {
+  animation:
+    wordmarkStarRotation 3.5s linear infinite;
+}
+
+@keyframes wordmarkStarRotation {
+  0% {
+    transform: perspective(160px) rotateY(0deg);
+  }
+
+  25% {
+    transform: perspective(160px) rotateY(90deg);
+  }
+
+  50% {
+    transform: perspective(160px) rotateY(180deg);
+  }
+
+  75% {
+    transform: perspective(160px) rotateY(270deg);
+  }
+
+  100% {
+    transform: perspective(160px) rotateY(360deg);
+  }
+}
+
+/* =========================================
+   SPARKLE
+========================================= */
+
+.shield-wordmark-star-holder.spark::before,
+.shield-wordmark-star-holder.spark::after {
+  content: "";
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  pointer-events: none;
+}
+
+.shield-wordmark-star-holder.spark::before {
+  width: 340%;
+  height: 340%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,250,215,.95) 0%,
+      rgba(255,220,125,.65) 18%,
+      rgba(221,176,87,.15) 50%,
+      transparent 75%
+    );
+
+  filter: blur(5px);
+
+animation: wordmarkSparkFlash 2s ease-out forwards;
+}
+
+
+.shield-wordmark-star-holder.spark::after {
+  width: 390%;
+  height: 12%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,245,195,1),
+      transparent
+    );
+
+  box-shadow:
+    0 0 10px rgba(255,220,125,.8);
+
+   animation: wordmarkSparkRay 2s ease-out forwards;
+}
+
+
+@keyframes wordmarkSparkFlash {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.25);
+  }
+
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  65% {
+    opacity: .85;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+@keyframes wordmarkSparkRay {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scaleX(.2);
+  }
+
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(1);
+  }
+
+  65% {
+    opacity: .8;
+    transform: translate(-50%, -50%) scaleX(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scaleX(1.15);
+  }
+}
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1050px) {
+  .shield-wordmark-target {
+    top: 76.5%;
+    width: 51%;
+  }
+}
+
+@media (max-width: 767px) {
+  .shield-wordmark-target {
+    top: 76.5%;
+    width: 51%;
+  }
+
+  .shield-wordmark-star-holder {
+    width: 11%;
+  }
+}
+
+/* Motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .shield-wordmark-star {
+    animation: none !important;
+  }
+
+  .shield-wordmark-star-holder::before,
+  .shield-wordmark-star-holder::after {
+    display: none;
+  }
+  
+}
