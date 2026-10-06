@@ -20,7 +20,8 @@
   height: 100%;
 
   object-fit: contain;
-
+
+
 }
 
 /* Dragon final position in shield */
@@ -128,7 +129,7 @@
     );
 
   animation:
-    shieldBackdropFade 4.5s ease both;
+    shieldBackdropFade 10s ease both;
 }
 
 @keyframes shieldBackdropFade {
@@ -197,7 +198,7 @@
   transform: translate(-50%, -50%);
 
   animation:
-    shieldEffectsLeave 4.5s ease both;
+    shieldEffectsLeave 6s ease both;
 }
 
 @keyframes shieldEffectsLeave {
@@ -263,9 +264,7 @@
 
 /* Decorative concentric rings */
 
-.shield-intro-ring {
-  display: none;
-}
+
 
 .ring-one {
   width: 75%;
@@ -364,7 +363,7 @@
   text-align: center;
 
   animation:
-    shieldTextShow 4.5s ease both;
+    shieldTextShow 6s ease both;
 }
 
 .shield-intro-bottom-line span {
@@ -377,12 +376,12 @@
     letter-spacing: 5px;
   }
 
-  25%, 47% {
+  25%, 62% {
     opacity: 1;
     letter-spacing: 2.2px;
   }
 
-  65%, 100% {
+  78%, 100% {
     opacity: 0;
   }
 }

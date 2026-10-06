@@ -15,7 +15,7 @@ let introConsumed = false;
 const LOGO = "/images/logo.png";
 const SHIELD = "/images/shield_only.png";
 
-const INTRO_DURATION = 4500;
+const INTRO_DURATION = 6000;
 
 export default function AnimatedShield() {
   const targetRef = useRef(null);
@@ -128,20 +128,20 @@ export default function AnimatedShield() {
 
           // Hold visibly in center
           {
-            offset: 0.39,
+            offset: 0.52,
             opacity: 1,
             transform: transformAt(0, -8, 1, 0),
           },
 
           {
-            offset: 0.51,
+            offset: 0.65,
             opacity: 1,
             transform: transformAt(0, 0, 1, 0),
           },
 
           // Begin elegant movement
           {
-            offset: 0.66,
+            offset: 0.76,
             opacity: 1,
             transform: transformAt(
               dx * 0.18,
@@ -153,7 +153,7 @@ export default function AnimatedShield() {
 
           // Fly toward the shield
           {
-            offset: 0.84,
+            offset: 0.91,
             opacity: 1,
             transform: transformAt(
               dx * 0.83,

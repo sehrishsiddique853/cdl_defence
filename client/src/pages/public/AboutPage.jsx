@@ -182,6 +182,9 @@ export default function AboutPage() {
             <img
               src="/images/logo-optimized.png"
               alt="CDL Defense crest"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="about-hero-crest"
             />
 
