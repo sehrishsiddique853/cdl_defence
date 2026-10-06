@@ -1,199 +1,271 @@
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import "../../style/AnimatedShield.css";
 
-const STORAGE_KEY = "cdl-defense-intro-seen";
+// This is evaluated once when the website document loads.
+// Navigating between React pages does not reset it.
+const openedDirectlyOnHome =
+  typeof window !== "undefined" &&
+  window.location.pathname === "/";
 
-function hasSeenIntro() {
-  try {
-    return localStorage.getItem(STORAGE_KEY) === "yes";
-  } catch {
-    return false;
-  }
-}
+let introConsumed = false;
+
+const LOGO = "/images/logo.png";
+const SHIELD = "/images/shield_only.png";
+
+const INTRO_DURATION = 4500;
 
 export default function AnimatedShield() {
-  const shieldRef = useRef(null);
-  const logoRef = useRef(null);
+  const targetRef = useRef(null);
+  const floatingRef = useRef(null);
+  const animationRef = useRef(null);
 
-  const [settled, setSettled] = useState(hasSeenIntro);
+  const [playIntro] = useState(() => {
+    if (!openedDirectlyOnHome || introConsumed) {
+      return false;
+    }
+
+    introConsumed = true;
+    return true;
+  });
+
+  const [finished, setFinished] = useState(!playIntro);
 
   useEffect(() => {
-    if (settled) return;
+    if (!playIntro) return;
+
+    const floatingLogo = floatingRef.current;
+    const targetLogo = targetRef.current;
+
+    if (!floatingLogo || !targetLogo) return;
 
     let cancelled = false;
-    let animation;
-    let floatingLogo;
+    let animation = null;
 
-    const finish = () => {
-      if (cancelled) return;
-
-      setSettled(true);
-
+    const start = async () => {
+      // Ensure both assets are available before animating.
       try {
-        localStorage.setItem(STORAGE_KEY, "yes");
+        await Promise.all([
+          floatingLogo.decode(),
+          targetLogo.decode(),
+        ]);
       } catch {
-        // Animation still works if storage is unavailable.
+        // Image loading errors should not block the page.
       }
 
-      floatingLogo?.remove();
-    };
+      if (cancelled) return;
 
-    const startAnimation = async () => {
-      const shield = shieldRef.current;
-      const logo = logoRef.current;
-
-      if (!shield || !logo) return;
-
-      const reduceMotion = window.matchMedia(
+      const reducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
 
-      if (reduceMotion) {
-        finish();
+      if (reducedMotion) {
+        setFinished(true);
         return;
       }
 
-      // Wait for both images to load.
-      try {
-        await Promise.all([
-          shield.decode(),
-          logo.decode(),
-        ]);
-      } catch {
-        // Continue if image decoding isn't supported.
-      }
+      const target = targetLogo.getBoundingClientRect();
 
-      if (cancelled) return;
+      const float = floatingLogo.getBoundingClientRect();
 
-      // Get the exact final location of the dragon logo.
-      const rect = logo.getBoundingClientRect();
-
-      if (!rect.width || !rect.height) {
-        finish();
+      if (!target.width || !target.height || !float.width) {
+        setFinished(true);
         return;
       }
 
-      const targetX = rect.left + rect.width / 2;
-      const targetY = rect.top + rect.height / 2;
+      const targetCenterX =
+        target.left + target.width / 2;
 
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
+      const targetCenterY =
+        target.top + target.height / 2;
 
-      const moveX = centerX - targetX;
-      const moveY = centerY - targetY;
+      const floatCenterX =
+        float.left + float.width / 2;
 
-      // Large introductory size, responsive to screen width.
-      const desiredWidth = Math.min(
-        window.innerWidth * 0.65,
-        340
-      );
+      const floatCenterY =
+        float.top + float.height / 2;
 
-      const startScale = Math.min(
-        4.5,
-        Math.max(1.5, desiredWidth / rect.width)
-      );
+      const dx = targetCenterX - floatCenterX;
+      const dy = targetCenterY - floatCenterY;
 
-      // Floating copy that travels into the shield.
-      floatingLogo = document.createElement("img");
-      floatingLogo.src = "/images/logo.png";
-      floatingLogo.alt = "";
-      floatingLogo.setAttribute("aria-hidden", "true");
+      const scale = target.width / float.width;
 
-      Object.assign(floatingLogo.style, {
-        position: "fixed",
-        left: `${rect.left}px`,
-        top: `${rect.top}px`,
-        width: `${rect.width}px`,
-        height: `${rect.height}px`,
-        objectFit: "contain",
-        transformOrigin: "center center",
-        pointerEvents: "none",
-        zIndex: "9999",
-        filter: "drop-shadow(0 20px 28px rgba(0,0,0,.5))",
-      });
-
-      document.body.appendChild(floatingLogo);
-
-      const atCenter = (scale, rotation) =>
-        `translate(${moveX}px, ${moveY}px) ` +
-        `scale(${scale}) rotate(${rotation}deg)`;
+      const transformAt = (
+        x,
+        y,
+        size,
+        rotation = 0
+      ) =>
+        `translate(-50%, -50%) ` +
+        `translate3d(${x}px, ${y}px, 0) ` +
+        `scale(${size}) ` +
+        `rotate(${rotation}deg)`;
 
       animation = floatingLogo.animate(
         [
+          // First reveal
           {
             offset: 0,
             opacity: 0,
-            transform: atCenter(startScale * 0.55, -360),
+            transform: transformAt(0, 0, 0.35, -12),
+            filter:
+              "brightness(1.6) drop-shadow(0 0 25px rgba(221,176,87,.6))",
           },
+
+          // Pop and slight overshoot
           {
-            offset: 0.16,
+            offset: 0.12,
             opacity: 1,
-            transform: atCenter(startScale * 1.08, -330),
+            transform: transformAt(0, 0, 1.12, 3),
+            filter:
+              "brightness(1.15) drop-shadow(0 0 35px rgba(221,176,87,.55))",
           },
+
+          // Settle in center
           {
-            offset: 0.35,
+            offset: 0.2,
             opacity: 1,
-            transform: atCenter(startScale, -260),
+            transform: transformAt(0, 0, 1, 0),
+            filter:
+              "brightness(1) drop-shadow(0 18px 30px rgba(0,0,0,.55))",
           },
+
+          // Hold visibly in center
           {
-            offset: 0.75,
+            offset: 0.39,
             opacity: 1,
-            transform:
-              `translate(${moveX * 0.15}px, ` +
-              `${moveY * 0.15}px) ` +
-              "scale(1.18) rotate(-35deg)",
+            transform: transformAt(0, -8, 1, 0),
           },
+
+          {
+            offset: 0.51,
+            opacity: 1,
+            transform: transformAt(0, 0, 1, 0),
+          },
+
+          // Begin elegant movement
+          {
+            offset: 0.66,
+            opacity: 1,
+            transform: transformAt(
+              dx * 0.18,
+              dy * 0.18,
+              0.94,
+              95
+            ),
+          },
+
+          // Fly toward the shield
+          {
+            offset: 0.84,
+            opacity: 1,
+            transform: transformAt(
+              dx * 0.83,
+              dy * 0.83,
+              scale * 1.17,
+              315
+            ),
+          },
+
+          // Exact destination
           {
             offset: 1,
             opacity: 1,
-            transform: "translate(0px, 0px) scale(1) rotate(0deg)",
+            transform: transformAt(
+              dx,
+              dy,
+              scale,
+              360
+            ),
+            filter:
+              "brightness(1) drop-shadow(0 0 12px rgba(221,176,87,.15))",
           },
         ],
         {
-          duration: 2800,
-          easing: "cubic-bezier(.22, .8, .2, 1)",
+          duration: INTRO_DURATION,
+          easing: "cubic-bezier(.22, 1, .36, 1)",
           fill: "forwards",
         }
       );
 
-      animation.onfinish = finish;
+      animationRef.current = animation;
+
+      animation.onfinish = () => {
+        if (!cancelled) {
+          setFinished(true);
+        }
+      };
     };
 
-    startAnimation();
+    start();
 
     return () => {
       cancelled = true;
       animation?.cancel();
-      floatingLogo?.remove();
     };
-  }, [settled]);
+  }, [playIntro]);
 
   return (
-    <div className="animated-shield">
+    <>
+      <div className="animated-shield">
 
-      {/* Empty shield background */}
-      <img
-        ref={shieldRef}
-        src="/images/shield_only.png"
-        alt="CDL Defense protection shield"
-        className="animated-shield-base"
-        fetchPriority="high"
-      />
+        <img
+          src={SHIELD}
+          className="animated-shield-base"
+          alt="CDL Defense protection shield"
+          fetchPriority="high"
+        />
 
-      {/* Dragon logo final position */}
-      <img
-        ref={logoRef}
-        src="/images/logo.png"
-        alt=""
-        aria-hidden="true"
-        className={
-          `animated-shield-dragon ${
-            settled ? "is-settled" : ""
-          }`
-        }
-      />
+        <img
+          ref={targetRef}
+          src={LOGO}
+          className={`animated-shield-dragon ${
+            finished ? "is-settled" : ""
+          }`}
+          alt=""
+          aria-hidden="true"
+        />
 
-    </div>
+        <div
+          className={`animated-shield-final-light ${
+            finished ? "is-active" : ""
+          }`}
+        />
+
+      </div>
+
+      {playIntro && !finished &&
+        createPortal(
+          <div
+            className="shield-intro-stage"
+            aria-hidden="true"
+          >
+            <div className="shield-intro-backdrop" />
+
+            <div className="shield-intro-center-effects">
+              <div className="shield-intro-halo" />
+              <div className="shield-intro-ring ring-one" />
+              <div className="shield-intro-ring ring-two" />
+              <div className="shield-intro-ring ring-three" />
+            </div>
+
+            <img
+              ref={floatingRef}
+              src={LOGO}
+              className="shield-intro-floating-logo"
+              alt=""
+            />
+
+            <div className="shield-intro-bottom-line">
+              CDL DEFENSE
+              <span>✦</span>
+              YOUR CAREER. OUR COMMITMENT.
+            </div>
+          </div>,
+          document.body
+        )
+      }
+    </>
   );
 }
