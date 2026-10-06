@@ -797,68 +797,6 @@
     sans-serif;
 }
 
-.contact-faq-help {
-  display: grid;
-
-  grid-template-columns:
-    auto 1fr;
-
-  gap: 11px;
-
-  margin-top: 29px;
-
-  padding-top: 22px;
-
-  border-top:
-    1px solid
-    rgba(221,176,87,.16);
-}
-
-.contact-faq-help > svg {
-  color: #ddb057;
-}
-
-.contact-faq-help strong {
-  display: block;
-
-  color: #e0e3e5;
-
-  font:
-    600 10px
-    "Inter",
-    sans-serif;
-}
-
-.contact-faq-help span {
-  display: block;
-
-  margin-top: 4px;
-
-  color: #7e8992;
-
-  font:
-    400 10px
-    "Inter",
-    sans-serif;
-}
-
-.contact-faq-help a {
-  grid-column: 2;
-
-  width: fit-content;
-
-  margin-top: 6px;
-
-  color: #ddb057;
-
-  text-decoration: none;
-
-  font:
-    600 10px
-    "Inter",
-    sans-serif;
-}
-
 .contact-faq-list {
   border-top:
     1px solid

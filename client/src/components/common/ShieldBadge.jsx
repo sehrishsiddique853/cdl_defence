@@ -4,7 +4,7 @@ export default function ShieldBadge() {
   return (
     <div className="shield-badge">
       <img
-        src="/images/shield.png"
+        src="/images/shield_only.png"
         alt="CDL Defense royal crest"
         className="shield-badge-image"
         width="1122"

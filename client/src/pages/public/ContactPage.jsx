@@ -381,23 +381,6 @@ export default function ContactPage() {
               support.
             </p>
 
-            <div className="contact-faq-help">
-              <Headphones size={20} />
-
-              <div>
-                <strong>
-                  Still need help?
-                </strong>
-
-                <span>
-                  Call member support directly.
-                </span>
-              </div>
-
-              <a href="tel:+12025550147">
-                +1 (202) 555-0147
-              </a>
-            </div>
           </Reveal>
 
           <div className="contact-faq-list">

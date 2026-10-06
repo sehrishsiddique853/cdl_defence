@@ -533,23 +533,6 @@ export default function AboutPage() {
               work and what drivers can expect from CDL Defense.
             </p>
 
-            <div className="about-faq-support">
-              <Headphones size={20} />
-
-              <div>
-                <strong>
-                  Still have a question?
-                </strong>
-
-                <span>
-                  Contact our team for more information.
-                </span>
-              </div>
-
-              <Link to="/contact">
-                CONTACT US
-              </Link>
-            </div>
           </Reveal>
 
           <div className="about-faq-list">
