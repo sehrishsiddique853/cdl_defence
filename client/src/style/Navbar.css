@@ -30,11 +30,12 @@
 .royal-brand {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 2px;
   flex-shrink: 0;
 }
 
 .royal-brand-wordmark {
+  margin-left: -4px;
   width: clamp(130px, 12vw, 180px);
   height: auto;
   max-height: 50px;

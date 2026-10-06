@@ -110,8 +110,6 @@ export default function AnimatedShield() {
             offset: 0,
             opacity: 0,
             transform: transformAt(0, 0, 0.35, -12),
-            filter:
-              "brightness(1.6) drop-shadow(0 0 25px rgba(221,176,87,.6))",
           },
 
           // Pop and slight overshoot
@@ -119,8 +117,6 @@ export default function AnimatedShield() {
             offset: 0.12,
             opacity: 1,
             transform: transformAt(0, 0, 1.12, 3),
-            filter:
-              "brightness(1.15) drop-shadow(0 0 35px rgba(221,176,87,.55))",
           },
 
           // Settle in center
@@ -128,8 +124,6 @@ export default function AnimatedShield() {
             offset: 0.2,
             opacity: 1,
             transform: transformAt(0, 0, 1, 0),
-            filter:
-              "brightness(1) drop-shadow(0 18px 30px rgba(0,0,0,.55))",
           },
 
           // Hold visibly in center
@@ -179,8 +173,6 @@ export default function AnimatedShield() {
               scale,
               360
             ),
-            filter:
-              "brightness(1) drop-shadow(0 0 12px rgba(221,176,87,.15))",
           },
         ],
         {

@@ -20,11 +20,7 @@
   height: 100%;
 
   object-fit: contain;
-
-  filter:
-    drop-shadow(
-      0 22px 30px rgba(0, 0, 0, .55)
-    );
+
 }
 
 /* Dragon final position in shield */
@@ -268,14 +264,7 @@
 /* Decorative concentric rings */
 
 .shield-intro-ring {
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  border-radius: 50%;
-
-  transform: translate(-50%, -50%);
+  display: none;
 }
 
 .ring-one {

@@ -408,10 +408,7 @@
     padding-left: 4%;
   }
 
-  .royal-brand img {
-    width: 88px;
-    max-height: 54px;
-  }
+
 
   .royal-hero-inner {
     padding-right: 5%;
@@ -477,5 +474,225 @@
 
   .royal-hero-buttons a {
     transition: none;
+  }
+}
+
+
+
+/* ============================================
+   RESPONSIVE HERO — SHIELD FIRST
+   Desktop layout remains unchanged
+============================================ */
+
+@media (max-width: 900px) {
+
+  .royal-hero {
+    min-height: 100svh;
+    height: auto;
+    display: block;
+    overflow: hidden;
+  }
+
+  .royal-hero-inner {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 650px;
+
+    padding: 105px 6% 80px;
+    margin: 0 auto;
+
+    gap: 30px;
+  }
+
+  /* Shield comes first */
+
+  .royal-hero-right {
+    position: relative;
+    inset: auto;
+
+    order: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 0;
+
+    margin: 0 auto;
+
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .royal-crest-glow {
+    width: min(80%, 350px);
+  }
+
+  /* Text and buttons follow the shield */
+
+  .royal-hero-left {
+    order: 2;
+
+    width: 100%;
+    min-width: 0;
+
+    position: relative;
+    z-index: 3;
+
+    text-align: center;
+  }
+
+  .royal-ticket-strip {
+    margin: 0 auto 22px;
+
+    justify-content: center;
+  }
+
+  .royal-hero-kicker {
+    text-align: center;
+  }
+
+  .royal-hero-heading h1 {
+    text-align: center;
+  }
+
+  .royal-heading-divider {
+    margin: 17px auto;
+  }
+
+  .royal-hero-heading p {
+    max-width: 550px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .royal-hero-buttons {
+    justify-content: center;
+    margin-top: 25px;
+  }
+
+  /* Shield stays fully visible */
+
+  .animated-shield {
+    width: min(55vw, 280px);
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .royal-hero-bottom {
+    z-index: 4;
+  }
+}
+
+
+/* ============================================
+   MOBILE
+============================================ */
+
+@media (max-width: 767px) {
+
+  .royal-hero-inner {
+    max-width: 500px;
+
+    padding: 90px 6% 85px;
+
+    gap: 23px;
+  }
+
+  .animated-shield {
+    width: clamp(175px, 49vw, 245px);
+  }
+
+  .royal-hero-right {
+    right: auto;
+    bottom: auto;
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .royal-ticket-strip {
+    width: fit-content;
+
+    margin: 0 auto 19px;
+
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+  .royal-hero-heading h1 {
+    font-size: clamp(28px, 7.5vw, 39px);
+    line-height: 1.12;
+    text-align: center;
+  }
+
+  .royal-hero-heading p {
+    font-size: 12.5px;
+    line-height: 1.75;
+    text-align: center;
+  }
+
+  .royal-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .royal-hero-buttons a {
+    min-height: 44px;
+    padding: 12px 15px;
+    font-size: 10px;
+  }
+
+  .royal-hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 8, 12, .35) 0%,
+        rgba(7, 8, 12, .55) 48%,
+        rgba(7, 8, 12, .82) 100%
+      );
+  }
+}
+
+
+/* ============================================
+   SMALL PHONES
+============================================ */
+
+@media (max-width: 420px) {
+
+  .royal-hero-inner {
+    padding: 88px 5% 75px;
+    gap: 18px;
+  }
+
+  .animated-shield {
+    width: min(52vw, 205px);
+  }
+
+  .royal-ticket-strip {
+    max-width: 100%;
+    font-size: 8px;
+    padding: 9px 10px;
+  }
+
+  .royal-hero-heading h1 {
+    font-size: clamp(26px, 7.6vw, 34px);
+  }
+
+  .royal-hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .royal-hero-buttons a {
+    width: 100%;
   }
 }
