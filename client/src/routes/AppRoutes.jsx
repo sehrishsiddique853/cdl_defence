@@ -40,6 +40,9 @@ export default function AppRoutes() {
             path="/plans"
             element={<PlansPage />}
           />
+          <Route path="/contact" element={<ContactPage />} />
+
+
 
           <Route
             path="/member/login"
@@ -51,11 +54,6 @@ export default function AppRoutes() {
           path="*"
           element={<Navigate to="/" replace />}
         />
-
-        <Route
-  path="/contact"
-  element={<ContactPage />}
-/>
       </Routes>
     </>
   );
