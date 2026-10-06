@@ -219,7 +219,7 @@ export default function AboutPage() {
 
         <div className="about-story-image-frame">
           <img
-            src="/images/crimson1-optimized.jpg"
+            src="/images/crimson.png"
             alt="Professional commercial truck on the road"
             className="about-story-image"
           />
