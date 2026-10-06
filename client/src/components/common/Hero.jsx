@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ChevronsRight } from "lucide-react";
 import "../../style/Hero.css";
+import AnimatedShield from "./AnimatedShield";
 
 export default function Hero() {
   const videoRef = useRef(null);
@@ -114,18 +115,10 @@ export default function Hero() {
         </div>
 
         <div className="royal-hero-right">
-          <div className="royal-crest-glow" />
+  <div className="royal-crest-glow" />
 
-          <img
-            src="/images/shield_only.png"
-            alt="CDL Defense shield"
-            className="royal-crest"
-            width="1122"
-            height="1402"
-            fetchPriority="high"
-            decoding="async"
-          />
-        </div>
+  <AnimatedShield />
+</div>
 
       </div>
 

@@ -1,0 +1,135 @@
+
+/* ======================================
+   CDL DEFENSE ANIMATED SHIELD
+====================================== */
+
+.animated-shield {
+  position: relative;
+
+  width: min(100%, 390px);
+  aspect-ratio: 1122 / 1402;
+
+  max-width: 100%;
+  flex-shrink: 1;
+
+  margin: 0 auto;
+  isolation: isolate;
+}
+
+/* Shield background */
+
+.animated-shield-base {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 20px 28px rgba(0, 0, 0, 0.55)
+    );
+}
+
+/* Logo placement inside shield */
+
+.animated-shield-dragon {
+  position: absolute;
+
+  left: 50%;
+  top: 55%;
+
+  width: 40%;
+  height: auto;
+
+  transform: translate(-50%, -50%);
+
+  object-fit: contain;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.animated-shield-dragon.is-settled {
+  opacity: 1;
+}
+
+/* Gentle final glow */
+
+.animated-shield:has(
+  .animated-shield-dragon.is-settled
+) .animated-shield-dragon {
+  filter:
+    drop-shadow(
+      0 0 10px rgba(221, 176, 87, 0.15)
+    );
+
+  transition:
+    filter 0.8s ease;
+}
+
+/* Laptop */
+
+@media (max-width: 1200px) {
+  .animated-shield {
+    width: min(100%, 320px);
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .animated-shield {
+    width: min(100%, 270px);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .royal-hero-right:has(.animated-shield) {
+    position: relative;
+    right: auto;
+    bottom: auto;
+
+    opacity: 1;
+    z-index: 1;
+
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  .royal-hero:has(.animated-shield) {
+    min-height: 100svh;
+    height: auto;
+  }
+
+  .animated-shield {
+    width: min(52vw, 210px);
+  }
+
+  .animated-shield-dragon {
+    top: 55%;
+    width: 40%;
+  }
+}
+
+/* Smaller mobile screens */
+
+@media (max-width: 380px) {
+  .animated-shield {
+    width: min(50vw, 175px);
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-shield-dragon {
+    transition: none;
+  }
+}
