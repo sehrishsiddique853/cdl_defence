@@ -76,7 +76,7 @@ export default function ShieldWordmarkArrival({
       // Keep original navbar wordmark completely unchanged.
       clone = document.createElement("img");
 
-      clone.src = source.currentSrc || source.src;
+      clone.src = WORDMARK;
       clone.alt = "";
       clone.setAttribute("aria-hidden", "true");
 
@@ -148,8 +148,8 @@ export default function ShieldWordmarkArrival({
           },
         ],
         {
-          duration: 2000,
-          easing: "cubic-bezier(.22,1,.36,1)",
+          duration: 2150,
+          easing: "cubic-bezier(.16,.84,.24,1)",
           fill: "forwards",
         }
       );
@@ -162,18 +162,30 @@ export default function ShieldWordmarkArrival({
 
       if (cancelled) return;
 
-      // Show the permanent branding at the exact
-      // same location before removing the flying clone.
+      // Crossfade into the permanent wordmark at the exact destination
+      // so the user never sees an obvious image replacement.
       setSettled(true);
-      setSpark(true);
 
-      requestAnimationFrame(() => {
+      clone.animate(
+        [
+          { opacity: 1 },
+          { opacity: 0 },
+        ],
+        {
+          duration: 220,
+          easing: "ease-out",
+          fill: "forwards",
+        }
+      );
+
+      window.setTimeout(() => {
         clone?.remove();
-      });
+        if (!cancelled) setSpark(true);
+      }, 180);
 
       spinTimer = window.setTimeout(() => {
         if (!cancelled) setSpinning(true);
-      }, 1800);
+      }, 1980);
     };
 
     startFlight();
