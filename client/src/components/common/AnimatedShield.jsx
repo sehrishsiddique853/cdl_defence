@@ -210,33 +210,9 @@ export default function AnimatedShield() {
           fetchPriority="high"
         />
 
-        <div className="animated-shield-mark-stars" aria-hidden="true">
-          <img
-            src="/images/star.png"
-            alt=""
-            className="shield-mark-star shield-mark-star-left"
-            decoding="async"
-          />
-          <img
-            src="/images/star.png"
-            alt=""
-            className="shield-mark-star shield-mark-star-center"
-            decoding="async"
-          />
-          <img
-            src="/images/star.png"
-            alt=""
-            className="shield-mark-star shield-mark-star-right"
-            decoding="async"
-          />
-        </div>
+        
 
-        <div className="animated-shield-title" aria-hidden="true">
-          <span>YOUR</span>
-          <span>PARTNER IN</span>
-          <span>CDL PROTECTION</span>
-        </div>
-
+       
         <img
           ref={targetRef}
           src={LOGO}

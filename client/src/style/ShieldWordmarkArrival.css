@@ -44,7 +44,7 @@
 
   /* Optical alignment: move only the CDL Defense lettering slightly left.
      The star stays on the shield's exact center line. */
-  transform: translateX(4%);
+  transform: translateX(2%);
 }
 
 /* Star between CDL and Defense */
@@ -52,7 +52,7 @@
 .shield-wordmark-star-holder {
   position: absolute;
 
-  left: 51.5%;
+  left: 48%;
   top: 50%;
 
   width: 10%;
