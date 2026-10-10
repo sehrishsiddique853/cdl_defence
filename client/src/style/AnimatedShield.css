@@ -586,311 +586,363 @@
 
 
 /* =============================================
-   DRAGON FIRE BURST
-   Add-on effect only — existing shield animation
-   and positioning remain unchanged.
+   DRAGON FIRE BURST — BRIGHT MOUTH-TRACKED PLUME
+   Tracks the moving dragon without altering its animation.
 ============================================= */
 
 .shield-dragon-fire {
-  position: absolute;
-
-  /* Positioned at the dragon mouth when it reaches the shield */
-  left: 39.8%;
-  top: 44.2%;
-
-  width: clamp(42px, 17%, 72px);
-  height: clamp(18px, 6.5%, 30px);
-
-  transform: translate(-100%, -50%);
-  transform-origin: right center;
-
-  z-index: 12;
+  position: fixed;
+  z-index: 10002;
   pointer-events: none;
 
+  width: calc(150px * var(--dragon-fire-scale, 1));
+  height: calc(74px * var(--dragon-fire-scale, 1));
+
+  transform:
+    translate(-100%, -50%)
+    rotate(-4deg);
+
+  transform-origin: right center;
+
   filter:
-    drop-shadow(0 0 6px rgba(255, 122, 0, .85))
-    drop-shadow(0 0 13px rgba(255, 55, 0, .35));
+    drop-shadow(0 0 7px rgba(255, 245, 170, .95))
+    drop-shadow(0 0 16px rgba(255, 136, 0, .95))
+    drop-shadow(0 0 32px rgba(255, 55, 0, .7));
 
   animation:
-    dragonFireBurst .67s
-    cubic-bezier(.18,.75,.22,1)
+    dragonFireAppear .46s
+    cubic-bezier(.14,.82,.24,1)
     both;
+
+  will-change: left, top, transform, filter, opacity;
 }
 
 .shield-dragon-fire-outer,
 .shield-dragon-fire-mid,
-.shield-dragon-fire-core {
+.shield-dragon-fire-core,
+.shield-dragon-fire-hotspot {
   position: absolute;
-
-  right: 0;
+  right: -2px;
   top: 50%;
-
-  border-radius:
-    70% 12% 12% 70% /
-    50% 45% 55% 50%;
-
   transform-origin: right center;
+  pointer-events: none;
 }
 
-/* Red/orange outer flame */
+/* Large irregular red-orange envelope */
 .shield-dragon-fire-outer {
   width: 100%;
   height: 100%;
-
   transform: translateY(-50%);
 
   background:
-    linear-gradient(
-      90deg,
-      rgba(184, 20, 0, 0) 0%,
-      #e83500 20%,
-      #ff7100 58%,
-      #ffb000 100%
+    radial-gradient(
+      ellipse at 88% 50%,
+      rgba(255, 248, 180, .98) 0%,
+      rgba(255, 190, 30, .96) 12%,
+      rgba(255, 92, 0, .98) 34%,
+      rgba(232, 38, 0, .92) 60%,
+      rgba(124, 0, 0, .12) 82%,
+      transparent 100%
     );
 
   clip-path:
     polygon(
       0% 50%,
-      18% 22%,
-      31% 34%,
-      48% 7%,
-      66% 30%,
-      100% 42%,
-      100% 58%,
-      66% 72%,
-      48% 93%,
-      31% 66%,
-      18% 78%
+      8% 39%,
+      17% 18%,
+      27% 31%,
+      38% 4%,
+      49% 29%,
+      61% 11%,
+      72% 34%,
+      86% 26%,
+      100% 43%,
+      100% 57%,
+      87% 71%,
+      73% 65%,
+      60% 90%,
+      48% 70%,
+      35% 96%,
+      25% 68%,
+      15% 81%,
+      7% 61%
     );
 
   animation:
-    dragonFireWave .16s
+    dragonFireLash .105s
     ease-in-out infinite alternate;
 }
 
-/* Bright orange middle */
+/* Strong orange/yellow middle */
 .shield-dragon-fire-mid {
-  width: 78%;
+  width: 82%;
   height: 68%;
+  transform: translateY(-50%);
 
+  background:
+    radial-gradient(
+      ellipse at 92% 50%,
+      #fffbd2 0%,
+      #ffe66b 14%,
+      #ffb000 38%,
+      #ff5a00 67%,
+      rgba(255, 62, 0, .1) 100%
+    );
+
+  clip-path:
+    polygon(
+      0% 50%,
+      15% 32%,
+      27% 8%,
+      42% 34%,
+      57% 16%,
+      70% 36%,
+      100% 44%,
+      100% 56%,
+      69% 66%,
+      56% 84%,
+      42% 67%,
+      28% 91%,
+      14% 68%
+    );
+
+  filter:
+    drop-shadow(0 0 9px rgba(255, 142, 0, .9));
+
+  animation:
+    dragonFireLash .08s
+    ease-in-out infinite alternate-reverse;
+}
+
+/* White-hot flame core */
+.shield-dragon-fire-core {
+  width: 58%;
+  height: 38%;
   transform: translateY(-50%);
 
   background:
     linear-gradient(
       90deg,
-      rgba(255, 76, 0, 0),
-      #ff5a00 25%,
-      #ffb300 65%,
-      #ffd94a 100%
+      rgba(255,255,225,0) 0%,
+      rgba(255,245,154,.7) 20%,
+      #fff1a0 50%,
+      #fffce7 78%,
+      #ffffff 100%
     );
 
   clip-path:
     polygon(
       0 50%,
-      26% 22%,
-      45% 36%,
-      66% 12%,
-      100% 42%,
-      100% 58%,
-      66% 88%,
-      45% 64%,
-      26% 78%
-    );
-
-  animation:
-    dragonFireWave .12s
-    ease-in-out infinite alternate-reverse;
-}
-
-/* Yellow-white hottest core */
-.shield-dragon-fire-core {
-  width: 48%;
-  height: 34%;
-
-  transform: translateY(-50%);
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255, 229, 84, 0),
-      #ffd747 34%,
-      #fff3a2 75%,
-      #fff9db 100%
+      23% 25%,
+      48% 34%,
+      68% 15%,
+      100% 43%,
+      100% 57%,
+      69% 85%,
+      47% 66%,
+      22% 76%
     );
 
   filter:
-    drop-shadow(0 0 4px rgba(255, 234, 118, .95));
+    blur(.15px)
+    drop-shadow(0 0 7px rgba(255,255,215,1));
 }
 
-/* Small sparks */
-.shield-dragon-fire-spark {
-  position: absolute;
-  width: 4px;
-  height: 4px;
+/* Bright ignition at the mouth */
+.shield-dragon-fire-hotspot {
+  width: 26px;
+  height: 22px;
 
+  transform: translate(8px, -50%);
   border-radius: 50%;
 
-  background: #ffd85b;
+  background:
+    radial-gradient(
+      circle,
+      #fff 0%,
+      #fff8ba 22%,
+      #ffd233 47%,
+      #ff7300 72%,
+      transparent 100%
+    );
+
+  filter:
+    blur(1px)
+    drop-shadow(0 0 10px #ffb000)
+    drop-shadow(0 0 18px rgba(255, 71, 0, .9));
+
+  animation:
+    dragonFireHotspot .09s
+    ease-in-out infinite alternate;
+}
+
+/* Sparks */
+.shield-dragon-fire-spark {
+  position: absolute;
+
+  width: calc(5px * var(--dragon-fire-scale, 1));
+  height: calc(5px * var(--dragon-fire-scale, 1));
+
+  border-radius: 50%;
+  opacity: 0;
+
+  background: #fff0a1;
 
   box-shadow:
-    0 0 5px #ff8a00,
-    0 0 9px rgba(255, 69, 0, .55);
-
-  opacity: 0;
+    0 0 5px #ffd000,
+    0 0 10px #ff7800,
+    0 0 15px rgba(255, 42, 0, .75);
 }
 
 .shield-dragon-fire-spark.spark-one {
-  left: 18%;
+  left: 13%;
   top: 17%;
-
-  animation:
-    dragonFireSparkOne .55s
-    ease-out infinite;
+  animation: dragonSparkA .48s ease-out infinite;
 }
 
 .shield-dragon-fire-spark.spark-two {
-  left: 34%;
-  top: 74%;
-
-  animation:
-    dragonFireSparkTwo .48s
-    .08s ease-out infinite;
+  left: 28%;
+  top: 78%;
+  animation: dragonSparkB .54s .06s ease-out infinite;
 }
 
 .shield-dragon-fire-spark.spark-three {
-  left: 48%;
-  top: 24%;
-
-  animation:
-    dragonFireSparkThree .6s
-    .12s ease-out infinite;
+  left: 42%;
+  top: 12%;
+  animation: dragonSparkC .44s .11s ease-out infinite;
 }
 
-@keyframes dragonFireBurst {
+.shield-dragon-fire-spark.spark-four {
+  left: 55%;
+  top: 72%;
+  animation: dragonSparkD .5s .03s ease-out infinite;
+}
+
+.shield-dragon-fire-spark.spark-five {
+  left: 68%;
+  top: 22%;
+  animation: dragonSparkE .47s .15s ease-out infinite;
+}
+
+@keyframes dragonFireAppear {
   0% {
     opacity: 0;
     transform:
       translate(-100%, -50%)
-      scaleX(.08)
+      rotate(-4deg)
+      scaleX(.12)
       scaleY(.45);
   }
 
-  16% {
+  18% {
     opacity: 1;
     transform:
       translate(-100%, -50%)
-      scaleX(1.08)
-      scaleY(1);
+      rotate(-4deg)
+      scaleX(1.14)
+      scaleY(1.05);
   }
 
-  48% {
+  52% {
     opacity: 1;
     transform:
       translate(-100%, -50%)
-      scaleX(.92)
-      scaleY(.94);
-  }
-
-  78% {
-    opacity: .95;
-    transform:
-      translate(-100%, -50%)
-      scaleX(1)
-      scaleY(1.03);
+      rotate(-4deg)
+      scaleX(.98)
+      scaleY(.95);
   }
 
   100% {
-    opacity: 0;
+    opacity: 1;
     transform:
       translate(-100%, -50%)
-      scaleX(.35)
-      scaleY(.5);
+      rotate(-4deg)
+      scaleX(1)
+      scaleY(1);
   }
 }
 
-@keyframes dragonFireWave {
+@keyframes dragonFireLash {
   from {
     transform:
       translateY(-50%)
       scaleX(.94)
-      scaleY(.9);
+      scaleY(.9)
+      skewY(-2deg);
   }
 
   to {
     transform:
       translateY(-50%)
-      scaleX(1.06)
-      scaleY(1.08);
+      scaleX(1.07)
+      scaleY(1.1)
+      skewY(2deg);
   }
 }
 
-@keyframes dragonFireSparkOne {
-  0% {
-    opacity: 0;
-    transform: translate(0, 0) scale(.5);
+@keyframes dragonFireHotspot {
+  from {
+    transform: translate(8px, -50%) scale(.9);
+    opacity: .82;
   }
 
-  30% {
+  to {
+    transform: translate(8px, -50%) scale(1.2);
     opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(-18px, -13px) scale(.1);
   }
 }
 
-@keyframes dragonFireSparkTwo {
-  0% {
-    opacity: 0;
-    transform: translate(0, 0) scale(.5);
-  }
-
-  35% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(-20px, 11px) scale(.15);
-  }
+@keyframes dragonSparkA {
+  0% { opacity: 0; transform: translate(0,0) scale(.3); }
+  22% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-34px,-28px) scale(.1); }
 }
 
-@keyframes dragonFireSparkThree {
-  0% {
-    opacity: 0;
-    transform: translate(0, 0) scale(.4);
-  }
+@keyframes dragonSparkB {
+  0% { opacity: 0; transform: translate(0,0) scale(.4); }
+  28% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-43px,25px) scale(.1); }
+}
 
-  30% {
-    opacity: 1;
-  }
+@keyframes dragonSparkC {
+  0% { opacity: 0; transform: translate(0,0) scale(.35); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-48px,-19px) scale(.1); }
+}
 
-  100% {
-    opacity: 0;
-    transform: translate(-24px, -6px) scale(.1);
-  }
+@keyframes dragonSparkD {
+  0% { opacity: 0; transform: translate(0,0) scale(.4); }
+  27% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-39px,31px) scale(.12); }
+}
+
+@keyframes dragonSparkE {
+  0% { opacity: 0; transform: translate(0,0) scale(.3); }
+  26% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-35px,-24px) scale(.1); }
 }
 
 @media (max-width: 900px) {
   .shield-dragon-fire {
-    left: 39.8%;
-    top: 44.2%;
+    width: calc(118px * var(--dragon-fire-scale, 1));
+    height: calc(58px * var(--dragon-fire-scale, 1));
+  }
 
-    width: clamp(34px, 17%, 58px);
-    height: clamp(15px, 6%, 24px);
+  .shield-dragon-fire-hotspot {
+    width: 20px;
+    height: 17px;
   }
 }
 
 @media (max-width: 480px) {
   .shield-dragon-fire {
-    width: clamp(28px, 16%, 46px);
-    height: clamp(12px, 5.8%, 20px);
+    width: calc(92px * var(--dragon-fire-scale, 1));
+    height: calc(45px * var(--dragon-fire-scale, 1));
   }
 
-  .shield-dragon-fire-spark {
-    width: 3px;
-    height: 3px;
+  .shield-dragon-fire-hotspot {
+    width: 16px;
+    height: 14px;
   }
 }
 
