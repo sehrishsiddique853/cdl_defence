@@ -9,9 +9,9 @@
 
   /* Location matching reference shield */
   left: 50%;
-  top: 76.5%;
+  top: 73.8%;
 
-  width: 51%;
+  width: 49%;
   aspect-ratio: 4 / 1;
 
   transform: translate(-50%, -50%);
@@ -20,6 +20,9 @@
   opacity: 0;
 
   pointer-events: none;
+
+  transition:
+    opacity 0.22s ease-out;
 }
 
 .shield-wordmark-target.is-settled {
@@ -209,15 +212,15 @@ animation: wordmarkSparkFlash 2s ease-out forwards;
 
 @media (max-width: 1050px) {
   .shield-wordmark-target {
-    top: 76.5%;
-    width: 51%;
+    top: 73.8%;
+    width: 49%;
   }
 }
 
 @media (max-width: 767px) {
   .shield-wordmark-target {
-    top: 76.5%;
-    width: 51%;
+    top: 73.8%;
+    width: 49%;
   }
 
   .shield-wordmark-star-holder {
