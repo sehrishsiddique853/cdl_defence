@@ -523,20 +523,20 @@
 
 /* Left yellow mark — inside upper-left red field */
 .shield-mark-star-left {
-  left: 17.5%;
-  top: 23.5%;
+  left: 16.5%;
+  top: 25.5%;
 }
 
 /* Yellow mark below the top apex */
 .shield-mark-star-center {
-  left: 50%;
+  left: 50.5%;
   top: 14.5%;
 }
 
 /* Right yellow mark — inside upper-right red field */
 .shield-mark-star-right {
-  left: 82.5%;
-  top: 23.5%;
+  left: 84.5%;
+  top: 25.5%;
 }
 
 @media (max-width: 900px) {
