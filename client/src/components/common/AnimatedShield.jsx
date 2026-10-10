@@ -210,23 +210,23 @@ export default function AnimatedShield() {
           fetchPriority="high"
         />
 
-        <div className="animated-shield-corner-stars" aria-hidden="true">
+        <div className="animated-shield-mark-stars" aria-hidden="true">
           <img
             src="/images/star.png"
             alt=""
-            className="shield-corner-star shield-corner-star-left"
+            className="shield-mark-star shield-mark-star-left"
             decoding="async"
           />
           <img
             src="/images/star.png"
             alt=""
-            className="shield-corner-star shield-corner-star-top"
+            className="shield-mark-star shield-mark-star-center"
             decoding="async"
           />
           <img
             src="/images/star.png"
             alt=""
-            className="shield-corner-star shield-corner-star-right"
+            className="shield-mark-star shield-mark-star-right"
             decoding="async"
           />
         </div>
