@@ -10,7 +10,7 @@
   /* Location matching reference shield */
   left: 50%;
   top: 75.2%;
-    width: 43.5%;
+    width: 44.5%;
   aspect-ratio: 4 / 1;
 
   transform: translate(-50%, -50%);
@@ -40,6 +40,7 @@
   height: 100%;
 
   object-fit: contain;
+  object-position: center center;
 }
 
 /* Star between CDL and Defense */
@@ -47,8 +48,8 @@
 .shield-wordmark-star-holder {
   position: absolute;
 
-  left: 47%;
-top: 58%;
+  left: 50%;
+  top: 58%;
 
   width: 10%;
   aspect-ratio: 1;
@@ -212,14 +213,14 @@ animation: wordmarkSparkFlash 2s ease-out forwards;
 @media (max-width: 1050px) {
   .shield-wordmark-target {
     top: 75.2%;
-    width: 44.5%;
+    width: 42.5%;
   }
 }
 
 @media (max-width: 767px) {
   .shield-wordmark-target {
     top: 75.2%;
-    width: 44.5%;
+    width: 42.5%;
   }
 
   .shield-wordmark-star-holder {
