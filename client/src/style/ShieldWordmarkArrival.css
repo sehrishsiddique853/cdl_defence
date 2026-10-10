@@ -41,6 +41,10 @@
 
   object-fit: contain;
   object-position: center center;
+
+  /* Optical alignment: move only the CDL Defense lettering slightly left.
+     The star stays on the shield's exact center line. */
+  transform: translateX(-2%);
 }
 
 /* Star between CDL and Defense */
