@@ -231,6 +231,12 @@ export default function AnimatedShield() {
           />
         </div>
 
+        <div className="animated-shield-title" aria-hidden="true">
+          <span>YOUR</span>
+          <span>PARTNER IN</span>
+          <span>CDL PROTECTION</span>
+        </div>
+
         <img
           ref={targetRef}
           src={LOGO}
