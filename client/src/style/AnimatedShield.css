@@ -405,21 +405,148 @@
 ============================================= */
 
 @media (max-width: 900px) {
-  .shield-corner-star {
-    width: clamp(15px, 6.5%, 24px);
+  .animated-shield {
+    width: min(100%, 276px);
   }
 
-  .shield-corner-star-left {
-    left: 17%;
-    top: 12.8%;
+  .shield-intro-floating-logo {
+    width: min(65vw, 270px);
+  }
+}
+
+/* =============================================
+   MOBILE
+============================================= */
+
+@media (max-width: 767px) {
+  .royal-hero-right:has(.animated-shield) {
+    position: relative;
+    right: auto;
+    bottom: auto;
+
+    width: 100%;
+    margin-top: 15px;
+
+    opacity: 1;
+    z-index: 1;
   }
 
-  .shield-corner-star-top {
-    top: 7.8%;
+  .royal-hero:has(.animated-shield) {
+    min-height: 100svh;
+    height: auto;
   }
 
-  .shield-corner-star-right {
-    left: 83%;
-    top: 12.8%;
+  .animated-shield {
+    width: min(52vw, 211px);
+  }
+
+  .animated-shield-dragon {
+    top: 54%;
+    width: 34%;
+  }
+
+  .shield-intro-floating-logo {
+    width: min(70vw, 250px);
+  }
+
+  .shield-intro-center-effects {
+    width: min(95vw, 360px);
+  }
+
+  .shield-intro-bottom-line {
+    bottom: 12%;
+
+    gap: 8px;
+
+    font-size: 8px;
+    letter-spacing: 1.2px;
+    line-height: 1.8;
+  }
+}
+
+/* =============================================
+   SMALL MOBILE
+============================================= */
+
+@media (max-width: 380px) {
+  .animated-shield {
+    width: min(50vw, 181px);
+  }
+
+  .shield-intro-floating-logo {
+    width: min(68vw, 215px);
+  }
+}
+
+/* =============================================
+   REDUCED MOTION
+============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .shield-intro-stage {
+    display: none;
+  }
+
+  .animated-shield-dragon {
+    opacity: 1;
+  }
+
+  .animated-shield-final-light {
+    animation: none;
+  }
+}
+
+
+
+/* =============================================
+   THREE STATIC STARS — MARKED SHIELD POSITIONS
+   These are intentionally independent from the
+   existing dragon/wordmark animations.
+============================================= */
+
+.animated-shield-mark-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.shield-mark-star {
+  position: absolute;
+  display: block;
+  width: clamp(16px, 5.4%, 22px);
+  height: auto;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .28));
+}
+
+/* Left yellow mark — inside upper-left red field */
+.shield-mark-star-left {
+  left: 17.5%;
+  top: 28.5%;
+}
+
+/* Yellow mark below the top apex */
+.shield-mark-star-center {
+  left: 50%;
+  top: 13.5%;
+}
+
+/* Right yellow mark — inside upper-right red field */
+.shield-mark-star-right {
+  left: 82.5%;
+  top: 28.5%;
+}
+
+@media (max-width: 900px) {
+  .shield-mark-star {
+    width: clamp(14px, 5.2%, 19px);
+  }
+}
+
+@media (max-width: 480px) {
+  .shield-mark-star {
+    width: clamp(12px, 5%, 17px);
   }
 }
