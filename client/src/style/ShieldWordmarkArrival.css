@@ -9,9 +9,8 @@
 
   /* Location matching reference shield */
   left: 50%;
-  top: 73.8%;
-
-  width: 49%;
+  top: 75.2%;
+    width: 47.5%;
   aspect-ratio: 4 / 1;
 
   transform: translate(-50%, -50%);
@@ -212,15 +211,15 @@ animation: wordmarkSparkFlash 2s ease-out forwards;
 
 @media (max-width: 1050px) {
   .shield-wordmark-target {
-    top: 73.8%;
-    width: 49%;
+    top: 75.2%;
+    width: 47.5%;
   }
 }
 
 @media (max-width: 767px) {
   .shield-wordmark-target {
-    top: 73.8%;
-    width: 49%;
+    top: 75.2%;
+    width: 47.5%;
   }
 
   .shield-wordmark-star-holder {
