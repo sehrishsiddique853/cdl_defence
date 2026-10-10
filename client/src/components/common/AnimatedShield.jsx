@@ -32,6 +32,7 @@ export default function AnimatedShield() {
   });
 
   const [finished, setFinished] = useState(!playIntro);
+  const [showFire, setShowFire] = useState(false);
 
   useEffect(() => {
     if (!playIntro) return;
@@ -43,6 +44,8 @@ export default function AnimatedShield() {
 
     let cancelled = false;
     let animation = null;
+    let fireStartTimer = null;
+    let fireStopTimer = null;
 
     const start = async () => {
       // Ensure both assets are available before animating.
@@ -184,6 +187,16 @@ export default function AnimatedShield() {
 
       animationRef.current = animation;
 
+      // Fire burst appears only during the final approach,
+      // just before the dragon locks into the shield.
+      fireStartTimer = window.setTimeout(() => {
+        if (!cancelled) setShowFire(true);
+      }, 5250);
+
+      fireStopTimer = window.setTimeout(() => {
+        if (!cancelled) setShowFire(false);
+      }, 5920);
+
       animation.onfinish = () => {
         if (!cancelled) {
           setFinished(true);
@@ -196,6 +209,9 @@ export default function AnimatedShield() {
     return () => {
       cancelled = true;
       animation?.cancel();
+      if (fireStartTimer) window.clearTimeout(fireStartTimer);
+      if (fireStopTimer) window.clearTimeout(fireStopTimer);
+      setShowFire(false);
     };
   }, [playIntro]);
 
@@ -228,6 +244,17 @@ export default function AnimatedShield() {
             finished ? "is-active" : ""
           }`}
         />
+
+        {showFire && !finished && (
+          <div className="shield-dragon-fire" aria-hidden="true">
+            <span className="shield-dragon-fire-outer" />
+            <span className="shield-dragon-fire-mid" />
+            <span className="shield-dragon-fire-core" />
+            <span className="shield-dragon-fire-spark spark-one" />
+            <span className="shield-dragon-fire-spark spark-two" />
+            <span className="shield-dragon-fire-spark spark-three" />
+          </div>
+        )}
 
         <ShieldWordmarkArrival
   active={finished}
