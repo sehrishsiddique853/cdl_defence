@@ -19,34 +19,44 @@
 .royal-nav-inner {
   max-width: 1600px;
   height: 82px;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 35px;
+  gap: 32px;
 }
 
 .royal-brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 2px;
+  justify-content: flex-start;
+  gap: 3px;
   flex-shrink: 0;
-}
-
-.royal-brand-wordmark {
-  margin-left: -4px;
-  width: clamp(130px, 12vw, 180px);
-  height: auto;
-  max-height: 50px;
-  object-fit: contain;
+  height: 100%;
+  text-decoration: none;
 }
 
 .royal-brand-crest {
-  width: clamp(48px, 5vw, 66px);
-  height: auto;
-  max-height: 62px;
+  display: block;
+  width: auto;
+  height: 58px;
+  max-width: 50px;
   object-fit: contain;
+  flex-shrink: 0;
+  transform: translateY(0);
+}
+
+.royal-brand-wordmark {
+  display: block;
+  width: 190px;
+  height: auto;
+  max-height: 48px;
+  object-fit: contain;
+  object-position: left center;
+  flex-shrink: 0;
+  margin-left: -5px;
+  transform: translateY(1px);
 }
 
 .royal-nav-links {
@@ -108,19 +118,37 @@
   display: none;
 }
 
+@media (min-width: 901px) and (max-width: 1300px) {
+  .royal-brand-crest {
+    height: 54px;
+    max-width: 46px;
+  }
+
+  .royal-brand-wordmark {
+    width: 175px;
+    max-height: 44px;
+    margin-left: -5px;
+  }
+}
+
 @media (max-width: 900px) {
   .royal-nav-inner {
     height: 72px;
   }
 
-  .royal-brand-wordmark {
-    width: clamp(105px, 30vw, 145px);
-    max-height: 42px;
+  .royal-brand {
+    gap: 2px;
   }
 
   .royal-brand-crest {
-    width: 48px;
-    max-height: 58px;
+    height: 46px;
+    max-width: 40px;
+  }
+
+  .royal-brand-wordmark {
+    width: 145px;
+    max-height: 38px;
+    margin-left: -4px;
   }
 
   .royal-login {
@@ -151,5 +179,18 @@
   .royal-nav-links.open,
   .royal-mobile-login {
     display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .royal-brand-crest {
+    height: 41px;
+    max-width: 36px;
+  }
+
+  .royal-brand-wordmark {
+    width: 128px;
+    max-height: 34px;
+    margin-left: -4px;
   }
 }
