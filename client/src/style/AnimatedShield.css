@@ -550,3 +550,86 @@
     width: clamp(11px, 4.8%, 16px);
   }
 }
+
+
+/* =============================================
+   SHIELD TOP TITLE
+============================================= */
+
+.animated-shield-title {
+  position: absolute;
+  left: 50.5%;
+  top: 26.8%;
+  width: 58%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  pointer-events: none;
+}
+
+.animated-shield-title span {
+  display: block;
+  color: #f6e3a4;
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+
+  text-shadow:
+    0 1px 0 #7a3b00,
+    0 2px 0 #5c2600,
+    0 3px 3px rgba(0,0,0,.72),
+    0 0 3px rgba(255,210,100,.22);
+}
+
+.animated-shield-title span:nth-child(1) {
+  font-size: clamp(18px, 5.4%, 27px);
+  margin-bottom: 2px;
+}
+
+.animated-shield-title span:nth-child(2) {
+  font-size: clamp(16px, 4.9%, 24px);
+  margin-bottom: 2px;
+}
+
+.animated-shield-title span:nth-child(3) {
+  font-size: clamp(15px, 4.6%, 22px);
+}
+
+/* Keep the title compact and inside the shield on smaller screens */
+@media (max-width: 900px) {
+  .animated-shield-title {
+    top: 26.8%;
+    width: 60%;
+  }
+
+  .animated-shield-title span:nth-child(1) {
+    font-size: clamp(15px, 5.2%, 23px);
+  }
+
+  .animated-shield-title span:nth-child(2) {
+    font-size: clamp(14px, 4.8%, 21px);
+  }
+
+  .animated-shield-title span:nth-child(3) {
+    font-size: clamp(13px, 4.5%, 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .animated-shield-title {
+    top: 26.6%;
+    width: 62%;
+  }
+
+  .animated-shield-title span {
+    line-height: 0.95;
+  }
+}
