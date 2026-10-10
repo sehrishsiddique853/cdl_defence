@@ -583,3 +583,319 @@
     line-height: 0.95;
   }
 }
+
+
+/* =============================================
+   DRAGON FIRE BURST
+   Add-on effect only — existing shield animation
+   and positioning remain unchanged.
+============================================= */
+
+.shield-dragon-fire {
+  position: absolute;
+
+  /* Positioned at the dragon mouth when it reaches the shield */
+  left: 39.8%;
+  top: 44.2%;
+
+  width: clamp(42px, 17%, 72px);
+  height: clamp(18px, 6.5%, 30px);
+
+  transform: translate(-100%, -50%);
+  transform-origin: right center;
+
+  z-index: 12;
+  pointer-events: none;
+
+  filter:
+    drop-shadow(0 0 6px rgba(255, 122, 0, .85))
+    drop-shadow(0 0 13px rgba(255, 55, 0, .35));
+
+  animation:
+    dragonFireBurst .67s
+    cubic-bezier(.18,.75,.22,1)
+    both;
+}
+
+.shield-dragon-fire-outer,
+.shield-dragon-fire-mid,
+.shield-dragon-fire-core {
+  position: absolute;
+
+  right: 0;
+  top: 50%;
+
+  border-radius:
+    70% 12% 12% 70% /
+    50% 45% 55% 50%;
+
+  transform-origin: right center;
+}
+
+/* Red/orange outer flame */
+.shield-dragon-fire-outer {
+  width: 100%;
+  height: 100%;
+
+  transform: translateY(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(184, 20, 0, 0) 0%,
+      #e83500 20%,
+      #ff7100 58%,
+      #ffb000 100%
+    );
+
+  clip-path:
+    polygon(
+      0% 50%,
+      18% 22%,
+      31% 34%,
+      48% 7%,
+      66% 30%,
+      100% 42%,
+      100% 58%,
+      66% 72%,
+      48% 93%,
+      31% 66%,
+      18% 78%
+    );
+
+  animation:
+    dragonFireWave .16s
+    ease-in-out infinite alternate;
+}
+
+/* Bright orange middle */
+.shield-dragon-fire-mid {
+  width: 78%;
+  height: 68%;
+
+  transform: translateY(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 76, 0, 0),
+      #ff5a00 25%,
+      #ffb300 65%,
+      #ffd94a 100%
+    );
+
+  clip-path:
+    polygon(
+      0 50%,
+      26% 22%,
+      45% 36%,
+      66% 12%,
+      100% 42%,
+      100% 58%,
+      66% 88%,
+      45% 64%,
+      26% 78%
+    );
+
+  animation:
+    dragonFireWave .12s
+    ease-in-out infinite alternate-reverse;
+}
+
+/* Yellow-white hottest core */
+.shield-dragon-fire-core {
+  width: 48%;
+  height: 34%;
+
+  transform: translateY(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 229, 84, 0),
+      #ffd747 34%,
+      #fff3a2 75%,
+      #fff9db 100%
+    );
+
+  filter:
+    drop-shadow(0 0 4px rgba(255, 234, 118, .95));
+}
+
+/* Small sparks */
+.shield-dragon-fire-spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #ffd85b;
+
+  box-shadow:
+    0 0 5px #ff8a00,
+    0 0 9px rgba(255, 69, 0, .55);
+
+  opacity: 0;
+}
+
+.shield-dragon-fire-spark.spark-one {
+  left: 18%;
+  top: 17%;
+
+  animation:
+    dragonFireSparkOne .55s
+    ease-out infinite;
+}
+
+.shield-dragon-fire-spark.spark-two {
+  left: 34%;
+  top: 74%;
+
+  animation:
+    dragonFireSparkTwo .48s
+    .08s ease-out infinite;
+}
+
+.shield-dragon-fire-spark.spark-three {
+  left: 48%;
+  top: 24%;
+
+  animation:
+    dragonFireSparkThree .6s
+    .12s ease-out infinite;
+}
+
+@keyframes dragonFireBurst {
+  0% {
+    opacity: 0;
+    transform:
+      translate(-100%, -50%)
+      scaleX(.08)
+      scaleY(.45);
+  }
+
+  16% {
+    opacity: 1;
+    transform:
+      translate(-100%, -50%)
+      scaleX(1.08)
+      scaleY(1);
+  }
+
+  48% {
+    opacity: 1;
+    transform:
+      translate(-100%, -50%)
+      scaleX(.92)
+      scaleY(.94);
+  }
+
+  78% {
+    opacity: .95;
+    transform:
+      translate(-100%, -50%)
+      scaleX(1)
+      scaleY(1.03);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(-100%, -50%)
+      scaleX(.35)
+      scaleY(.5);
+  }
+}
+
+@keyframes dragonFireWave {
+  from {
+    transform:
+      translateY(-50%)
+      scaleX(.94)
+      scaleY(.9);
+  }
+
+  to {
+    transform:
+      translateY(-50%)
+      scaleX(1.06)
+      scaleY(1.08);
+  }
+}
+
+@keyframes dragonFireSparkOne {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(.5);
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-18px, -13px) scale(.1);
+  }
+}
+
+@keyframes dragonFireSparkTwo {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(.5);
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-20px, 11px) scale(.15);
+  }
+}
+
+@keyframes dragonFireSparkThree {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(.4);
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-24px, -6px) scale(.1);
+  }
+}
+
+@media (max-width: 900px) {
+  .shield-dragon-fire {
+    left: 39.8%;
+    top: 44.2%;
+
+    width: clamp(34px, 17%, 58px);
+    height: clamp(15px, 6%, 24px);
+  }
+}
+
+@media (max-width: 480px) {
+  .shield-dragon-fire {
+    width: clamp(28px, 16%, 46px);
+    height: clamp(12px, 5.8%, 20px);
+  }
+
+  .shield-dragon-fire-spark {
+    width: 3px;
+    height: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shield-dragon-fire {
+    display: none;
+  }
+}
