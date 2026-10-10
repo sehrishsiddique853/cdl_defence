@@ -514,7 +514,7 @@
 .shield-mark-star {
   position: absolute;
   display: block;
-  width: clamp(16px, 5.4%, 22px);
+  width: clamp(15px, 5%, 20px);
   height: auto;
   object-fit: contain;
   transform: translate(-50%, -50%);
@@ -524,29 +524,29 @@
 /* Left yellow mark — inside upper-left red field */
 .shield-mark-star-left {
   left: 17.5%;
-  top: 28.5%;
+  top: 23.5%;
 }
 
 /* Yellow mark below the top apex */
 .shield-mark-star-center {
   left: 50%;
-  top: 13.5%;
+  top: 14.5%;
 }
 
 /* Right yellow mark — inside upper-right red field */
 .shield-mark-star-right {
   left: 82.5%;
-  top: 28.5%;
+  top: 23.5%;
 }
 
 @media (max-width: 900px) {
   .shield-mark-star {
-    width: clamp(14px, 5.2%, 19px);
+    width: clamp(13px, 4.9%, 18px);
   }
 }
 
 @media (max-width: 480px) {
   .shield-mark-star {
-    width: clamp(12px, 5%, 17px);
+    width: clamp(11px, 4.8%, 16px);
   }
 }
