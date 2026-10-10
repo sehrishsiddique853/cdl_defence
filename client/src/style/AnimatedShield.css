@@ -35,8 +35,6 @@
   width: 34%;
   height: auto;
 
-  transform: scale(1.025);
-
   object-fit: contain;
 
   opacity: 0;
