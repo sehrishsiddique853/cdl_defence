@@ -21,6 +21,7 @@ export default function AnimatedShield() {
   const targetRef = useRef(null);
   const floatingRef = useRef(null);
   const animationRef = useRef(null);
+  const fireRef = useRef(null);
 
   const [playIntro] = useState(() => {
     if (!openedDirectlyOnHome || introConsumed) {
@@ -191,11 +192,11 @@ export default function AnimatedShield() {
       // just before the dragon locks into the shield.
       fireStartTimer = window.setTimeout(() => {
         if (!cancelled) setShowFire(true);
-      }, 5250);
+      }, 5520);
 
       fireStopTimer = window.setTimeout(() => {
         if (!cancelled) setShowFire(false);
-      }, 5920);
+      }, 5980);
 
       animation.onfinish = () => {
         if (!cancelled) {
@@ -214,6 +215,43 @@ export default function AnimatedShield() {
       setShowFire(false);
     };
   }, [playIntro]);
+
+  useEffect(() => {
+    if (!showFire || finished) return;
+
+    let frameId = null;
+
+    const trackDragonFire = () => {
+      const dragon = floatingRef.current;
+      const fire = fireRef.current;
+
+      if (!dragon || !fire) return;
+
+      const rect = dragon.getBoundingClientRect();
+
+      if (!rect.width || !rect.height) return;
+
+      // The griffin faces left. These percentages place the flame
+      // directly at the mouth of the moving logo.
+      const mouthX = rect.left + rect.width * 0.285;
+      const mouthY = rect.top + rect.height * 0.405;
+
+      fire.style.left = `${mouthX}px`;
+      fire.style.top = `${mouthY}px`;
+      fire.style.setProperty(
+        "--dragon-fire-scale",
+        String(Math.max(0.72, Math.min(1.2, rect.width / 180)))
+      );
+
+      frameId = requestAnimationFrame(trackDragonFire);
+    };
+
+    frameId = requestAnimationFrame(trackDragonFire);
+
+    return () => {
+      if (frameId) cancelAnimationFrame(frameId);
+    };
+  }, [showFire, finished]);
 
   return (
     <>
@@ -245,17 +283,6 @@ export default function AnimatedShield() {
           }`}
         />
 
-        {showFire && !finished && (
-          <div className="shield-dragon-fire" aria-hidden="true">
-            <span className="shield-dragon-fire-outer" />
-            <span className="shield-dragon-fire-mid" />
-            <span className="shield-dragon-fire-core" />
-            <span className="shield-dragon-fire-spark spark-one" />
-            <span className="shield-dragon-fire-spark spark-two" />
-            <span className="shield-dragon-fire-spark spark-three" />
-          </div>
-        )}
-
         <ShieldWordmarkArrival
   active={finished}
   animate={playIntro}
@@ -284,6 +311,24 @@ export default function AnimatedShield() {
               className="shield-intro-floating-logo"
               alt=""
             />
+
+            {showFire && (
+              <div
+                ref={fireRef}
+                className="shield-dragon-fire"
+                aria-hidden="true"
+              >
+                <span className="shield-dragon-fire-outer" />
+                <span className="shield-dragon-fire-mid" />
+                <span className="shield-dragon-fire-core" />
+                <span className="shield-dragon-fire-hotspot" />
+                <span className="shield-dragon-fire-spark spark-one" />
+                <span className="shield-dragon-fire-spark spark-two" />
+                <span className="shield-dragon-fire-spark spark-three" />
+                <span className="shield-dragon-fire-spark spark-four" />
+                <span className="shield-dragon-fire-spark spark-five" />
+              </div>
+            )}
 
             <div className="shield-intro-bottom-line">
               CDL DEFENSE
