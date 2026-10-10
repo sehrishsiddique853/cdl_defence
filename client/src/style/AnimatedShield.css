@@ -6,7 +6,7 @@
 .animated-shield {
   position: relative;
 
-  width: min(100%, 390px);
+  width: min(100%, 396px);
   aspect-ratio: 1122 / 1402;
 
   margin: 0 auto;
@@ -390,7 +390,7 @@
 
 @media (max-width: 1200px) {
   .animated-shield {
-    width: min(100%, 320px);
+    width: min(100%, 326px);
   }
 
   .shield-intro-floating-logo {
@@ -404,7 +404,7 @@
 
 @media (max-width: 900px) {
   .animated-shield {
-    width: min(100%, 270px);
+    width: min(100%, 276px);
   }
 
   .shield-intro-floating-logo {
@@ -435,7 +435,7 @@
   }
 
   .animated-shield {
-    width: min(52vw, 205px);
+    width: min(52vw, 211px);
   }
 
   .animated-shield-dragon {
@@ -468,7 +468,7 @@
 
 @media (max-width: 380px) {
   .animated-shield {
-    width: min(50vw, 175px);
+    width: min(50vw, 181px);
   }
 
   .shield-intro-floating-logo {
